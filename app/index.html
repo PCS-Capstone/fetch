@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Fetch</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- STYLESHEETS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/datepicker.css">
+
+  <link href='https://fonts.googleapis.com/css?family=Roboto:400,300italic,300,500,500italic,700,700italic,400italic' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Muli:400,300,300italic,400italic' rel='stylesheet' type='text/css'>
+  
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+
+  <header class="header"><h1>Fetch</h1></header>
+  <section id="master" class="container"></section>
+
+  <!-- JavaScript Core Libraries -->
+  <script src="js/lib/jquery.js"></script>
+  <script src="js/lib/lodash.js"></script>
+  <script src="js/lib/backbone.js"></script>
+  <script src="js/lib/hbs.js"></script>
+  <script src="js/lib/exif.js"></script>
+  <script src="js/lib/bootstrap/bootstrap-datepicker.js"></script>
+  <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCI3j4h95OGMqH6Akyj6a9x4dJnnYrWL4U&libraries=places&callback=initMap">
+  </script>
+  <script>function initMap(){}</script>
+
+  <!-- Our Application Libraries -->
+  <script src="js/app/namespace.js"></script>
+  <script src="js/app/config.js"></script>
+  <script src="js/app/models/lostPet.js"></script>
+  <script src="js/app/collections/lostPets.js"></script>
+  <script src="js/app/templates/main.js"></script>
+
+  <!-- 
+  <script src="js/app/views/"></script>
+  
+  <script src="js/app/views/"></script>
+  <script src="js/app/views/"></script>
+  <script src="js/app/views/"></script>
+  <script src="js/app/views/"></script>
+  <script src="js/app/views/"></script>
+  <script src="js/app/views/"></script>
+
+  <script src="js/app/routers/main.js"></script>
+   -->
+
+  <!-- Start the Application -->
+  <script src="js/app/main.js"></script>
+
+</body>
+</html>
