@@ -1,7 +1,6 @@
-var App = App || {};
-
-App.Config || (App.Config = {});
-App.Models || (App.Models = {});
+var App =   App || {};
+App.Config      || (App.Config = {});
+App.Models      || (App.Models = {});
 App.Collections || (App.Collections = {});
 App.Routers || (App.Routers = {});
 App.Views || (App.Views = {});
