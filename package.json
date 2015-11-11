@@ -14,7 +14,7 @@
     "type": "git",
     "url": "git+https://github.com/PCS-Capstone/fetch.git"
   },
-  "author": "",
+  "author": "Joseph Fraley <jose.fraley@gmail.com> (joefraley.github.io)",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/PCS-Capstone/fetch/issues"
