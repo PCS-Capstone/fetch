@@ -88,6 +88,9 @@ App.Templates['template-searchform'] =
   '        <div class="checkbox-inline">' +
   '          <input type="checkbox" name="color-group" value="Gray"> Gray</input>' +
   '        </div>' +
+  '        <div class="checkbox-inline">' +
+  '          <input type="checkbox" name="color-group" value="BrighlyColored"> Brightly Colored</input>' +
+  '        </div>' +
   '      </div>' +
   '    </div>' +
   '  </div>' +
@@ -134,7 +137,9 @@ App.Templates['template-tile-view'] =
   '  </div>' +
   '  <div class="col-xs-6">' +
   '    <h4>Type: {{animalType}}</h4>' +
-  '    <h4>Color: {{#each colors}} {{this}} {{/each}}</h4>' +
+  '    {{#if colors}}' + 
+        '<h4>Color: {{#each colors}} {{this}} {{/each}}' +
+        '{{/if}}</h4>' +
   '  </div>' +
   '</div>' +
 
@@ -345,6 +350,12 @@ App.Templates['template-upload-sighting'] =
   '            <input id="uploadGray" type="checkbox" name="color-group" value="Gray">' +
   '            <label for="uploadGray">' +
   '              Gray' +
+  '            </label>' +
+  '          </div>' +
+  '          <div id="bright" class="col-sm-3 col-md-2 pull-left">' +
+  '            <input id="uploadBright" type="checkbox" name="color-group" value="BrightlyColored">' +
+  '            <label for="BrightlyColored">' +
+  '              Brightly Colored' +
   '            </label>' +
   '          </div>' +
   '        </fieldset>' +
