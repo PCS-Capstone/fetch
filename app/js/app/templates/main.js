@@ -283,7 +283,7 @@ App.Templates['template-upload-sighting'] =
   '        <label for="uploadDate" class="col-sm-2 control-label">' +
   '          ** Date:' +
   '        </label> ' +
-  '        <div class="col-sm-9 col-md-4  input-append date" id="uploadDateDiv" data-date="" data-date-format="yyyy-mm-dd">' +
+  '        <div class="col-sm-9 col-md-4  input-append date" id="uploadDateDiv" data-date="" data-date-format="mm-dd-yyyy">' +
   '          <input id="uploadDate" class="form-control span2" type="text" readonly="readonly" name="date" value="" maxlength="10" placeholder="Date" aria-required="true" required>' +
 
   '          <span class="add-on"><i class="icon-th"></i></span>' +

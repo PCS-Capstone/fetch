@@ -224,7 +224,7 @@ App.Views.UploadSighting = Backbone.View.extend({
         xMonth = displayDate[1];
         xDay = displayDate[2];
 
-        $('#uploadDate').val(xMonth + '-' + xDay + '-' + xYear );
+        $('#uploadDate').val(xMonth + '-' + xDay + '-' + xYear);
 
         displayTime = (displayTime.split(':'));
 
