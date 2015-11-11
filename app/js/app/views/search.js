@@ -229,7 +229,6 @@ App.Views.Results = Backbone.View.extend({
 
   render: function() {
     console.log('results view');
-    App.Config.CurrentView = this;
     this.$el.html( this.template(App.Config.SearchParameters) );
     this.$el.prependTo('#master');
 
@@ -520,7 +519,7 @@ App.Views.Map = Backbone.View.extend({
     //   disableDefaultUI: true
     // });
 
-    app.map = new App.Maps({center : center, zoom : 15, disableDefaultUI : true})
+    app.map = new App.Maps({center : center, zoom : 15, disableDefaultUI : true});
 
     //console.log( 'MapView.map', this.map );
     //console.log( this.map.center );

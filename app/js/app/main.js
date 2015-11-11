@@ -11,6 +11,8 @@ $(document).ready( function() {
   app.router.navigate('', {trigger: true});
 
   app.collection = new App.Collections.LostPets();
+  
   App.Maps = google.maps.Map;
+  console.log(App.Maps);
 
 });

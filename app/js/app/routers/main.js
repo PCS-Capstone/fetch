@@ -23,7 +23,7 @@ App.Routers.Router = Backbone.Router.extend({
 	},
 
 	search: function() {
-    	this.removeAllViews();
+  	this.removeAllViews();
 		app.views.search = new App.Views.SearchForm({});
 	},
 
