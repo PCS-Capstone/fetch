@@ -16,31 +16,37 @@ App.Routers.Router = Backbone.Router.extend({
 
 	search: function() {
 		console.log('search');
-		app.search = new App.SearchForm({});
+		App.Config.CurrentView.remove();
+		app.search = new App.Views.SearchForm({});
 	},
 
 	sighting: function() {
 		console.log('sighting');
+		App.Config.CurrentView.remove();
 		app.uploadSighting = new App.Views.UploadSighting({loc : {lat : null, lng : null}, exif : null, breed : null });
 	},
 
 	results: function() {
 		console.log('results');
+		App.Config.CurrentView.remove();
 		app.results = new App.Views.Results ({collection : app.collection});
 	},
 
 	noResults: function() {
 		console.log('no results');
+		App.Config.CurrentView.remove();
 		app.noResults = new App.Views.NoResults({});
 	},
 
 	error: function() {
 		console.log('error');
+		App.Config.CurrentView.remove();
 		app.error = new App.Views.Error({});
 	},
 
 	successful: function() {
 		console.log('success');
+		App.Config.CurrentView.remove();
 		app.successfulSubmission = new App.Views.SuccessfulSubmission({});
 	}
 });

@@ -5,7 +5,7 @@
 App.Views.SuccessfulSubmission = Backbone.View.extend({
 	tagName: 'section',
   className: 'success',
-  template: Handlebars.compile( $('#template-successful-submission').html()),
+  template: Handlebars.compile(App.Templates['template-successful-submission']),
 
   render: function() {
     App.Config.CurrentView = this;

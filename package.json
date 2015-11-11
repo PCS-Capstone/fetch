@@ -1,0 +1,30 @@
+{
+  "name": "fetch",
+  "version": "1.0.0",
+  "description": "PCS team project",
+  "main": "config.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PCS-Capstone/fetch.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/PCS-Capstone/fetch/issues"
+  },
+  "homepage": "https://github.com/PCS-Capstone/fetch#readme",
+  "dependencies": {
+    "body-parser": "^1.14.1",
+    "cloudinary": "^1.2.5",
+    "express": "^4.13.3",
+    "morgan": "^1.6.1",
+    "orchestrate": "^0.6.0"
+  }
+}
