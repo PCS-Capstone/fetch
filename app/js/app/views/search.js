@@ -4,7 +4,7 @@
 
 /*  Search Form
 --------------------*/
-App.SearchForm = Backbone.View.extend({
+App.Views.SearchForm = Backbone.View.extend({
     tagName: 'section',
   className: 'search',
    template: Handlebars.compile(App.Templates['template-searchform']),

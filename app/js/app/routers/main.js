@@ -9,39 +9,47 @@ App.Routers.Router = Backbone.Router.extend({
 		 'error' : 'error'
 	},
 
+  removeAllViews: function () {
+    for (var view in app.views){
+      app.views[view].remove();
+    };
+  },
+
 	index: function() {
-		console.log('index');
-		app.home = new App.Views.HomePage({});
+    if(Object.keys(app.views).length){
+      this.removeAllViews();
+    }
+		app.views.home = new App.Views.HomePage({});
 	},
 
 	search: function() {
-		console.log('search');
-		app.search = new App.SearchForm({});
+    this.removeAllViews();
+		app.views.search = new App.Views.SearchForm({});
 	},
 
 	sighting: function() {
-		console.log('sighting');
-		app.uploadSighting = new App.Views.UploadSighting({loc : {lat : null, lng : null}, exif : null, breed : null });
+		this.removeAllViews();
+		app.views.uploadSighting = new App.Views.UploadSighting({loc : {lat : null, lng : null}, exif : null, breed : null });
 	},
 
 	results: function() {
-		console.log('results');
-		app.results = new App.Views.Results ({collection : app.collection});
+		this.removeAllViews();
+		app.views.results = new App.Views.Results ({collection : app.collection});
 	},
 
 	noResults: function() {
-		console.log('no results');
-		app.noResults = new App.Views.NoResults({});
+		this.removeAllViews();
+		app.views.noResults = new App.Views.NoResults({});
 	},
 
 	error: function() {
-		console.log('error');
-		app.error = new App.Views.Error({});
+		this.removeAllViews();
+		app.views.error = new App.Views.Error({});
 	},
 
 	successful: function() {
-		console.log('success');
-		app.successfulSubmission = new App.Views.SuccessfulSubmission({});
+		this.removeAllViews();
+		app.views.successfulSubmission = new App.Views.SuccessfulSubmission({});
 	}
 });
 
