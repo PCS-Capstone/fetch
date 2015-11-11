@@ -4,7 +4,7 @@
   "description": "PCS team project",
   "main": "config.js",
   "directories": {
-    "test": "tests"
+    "test": "test"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",

@@ -22,11 +22,15 @@ App.Views.SearchForm = Backbone.View.extend({
   },
 
   render: function(){
+    console.log('render')
     App.Config.CurrentView = this;
 
-    if (App.Config.SearchParameters) {
+    if (App.Config.SearchParameters.animalType !== undefined) {
+      JSON.parse(App.Config.SearchParameters.location)
+      console.log('edit search')
       this.prePopulate();
     } else {
+      console.log('new search')
       this.$el.html( this.template() );
       $('#master').html(this.$el);
     }
@@ -50,7 +54,7 @@ App.Views.SearchForm = Backbone.View.extend({
 
     function convertToLatLng () {
       var place = autocomplete.getPlace();
-      App.Config.SearchParameters.location = { lat: place.geometry.location.lat(), lng: place.geometry.location.lng() }
+      App.Config.SearchParameters.location = { lat: place.geometry.location.lat(), lng: place.geometry.location.lng() };
       console.log( 'location:', App.Config.SearchParameters.location );
     }
   },
@@ -172,7 +176,7 @@ App.Views.SearchForm = Backbone.View.extend({
   prettyStartDate : null,
     prettyEndDate : null,
           address : shortAddress,
-         location : JSON.stringify(app.searchParameters.location),
+         location : JSON.stringify(App.Config.SearchParameters.location),
            radius : $('input[name="radius"]').val(),
        animalType : $('option:selected').val(),
            colors : $('input[name="color-group"]:checked').map( function(){ return this.value } ).toArray()
@@ -184,11 +188,14 @@ App.Views.SearchForm = Backbone.View.extend({
         success: function(collection, response, options)
           {console.log('success', response); 
             if (response[0] === undefined) {
-              app.router.navigate('noResults', {trigger: true});
+              app.router.navigate('noResults', {trigger : true});
             } else {
-              app.router.navigate('results', {trigger: true});
+              app.router.navigate('results', {trigger : true});
             }
-          }
+          },
+        error: function(collection, response, options)
+        {console.log('error', response)}
+
         });
     // this.validate();
 
@@ -231,11 +238,11 @@ App.Views.Results = Backbone.View.extend({
     console.log(App.Config.SearchParameters);
     console.log( 'searchParameters.location: ', App.Config.SearchParameters.location);
 
-    console.log('JSON PARSE', JSON.parse(App.SearchParameters.location));
+    // console.log('JSON PARSE', JSON.parse(App.SearchParameters.location));
 
     app.mapView = new App.Views.Map({
       collection : app.collection,
-      center: App.SearchParameters.location
+      center: App.Config.SearchParameters.location
     });
 
     app.collection.forEach(function(pet) {
@@ -270,7 +277,7 @@ App.Views.Results = Backbone.View.extend({
       app.collection.remove(model);
     }
 
-    App.Config.SearchParameters.location = JSON.parse(App.Config.SearchParameters.location);
+    // App.Config.SearchParameters.location = JSON.parse(App.Config.SearchParameters.location);
 
     App.Config.CurrentView.remove();
     app.router.navigate('search', {trigger : true, replace: true})
@@ -351,7 +358,7 @@ App.Views.Tile = Backbone.View.extend({
    template: Handlebars.compile(App.Templates['template-tile-view']),
 
   render: function() {
-    this.$el.html( this.template(this.model.get('value')) );
+    this.$el.html( this.template(this.model.get('value') ) );
   },
 
   initialize: function( options ) {
@@ -496,7 +503,8 @@ App.Views.Map = Backbone.View.extend({
   },
 
   loadMap: function(){
-    //console.log( 'loadmap MapView')
+
+    console.log( 'loadmap MapView')
     // console.log( 'MapView.loadMap()' );
     // console.log( 'loadMap center: ', this.center );
 
@@ -512,7 +520,7 @@ App.Views.Map = Backbone.View.extend({
     //   disableDefaultUI: true
     // });
 
-    app.map = new App.Map({center : center, zoom : 15, disableDefaultUI : true})
+    app.map = new App.Maps({center : center, zoom : 15, disableDefaultUI : true})
 
     //console.log( 'MapView.map', this.map );
     //console.log( this.map.center );
@@ -522,10 +530,10 @@ App.Views.Map = Backbone.View.extend({
   },
 
   populateMap: function(){
-    //console.log( 'populateMap MapView')
+    console.log( 'populateMap MapView')
     // console.log( 'MapView.populateMap()' );
     var self = this;
-    var template = Handlebars.compile($ ('#template-infowindow').html())
+    var template = Handlebars.compile(App.Templates['template-infowindow'])
     // console.log( 'map =', self.map );
     //var image = 'public/images/binoculars.png'
     //loop through the collection
@@ -541,7 +549,7 @@ App.Views.Map = Backbone.View.extend({
       var marker = new google.maps.Marker({
         position: model.get('value').location, //are these being altered??
         //icon: image,
-        map: self.map,
+        map: app.map,
         modelId: model.get('path').key
         // animation: google.maps.Animation.DROP
       });
