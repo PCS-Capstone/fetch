@@ -69,14 +69,17 @@ App.Views.UploadSighting = Backbone.View.extend({
     'click .animal-photo-div' : 'breedType',
   },
 
-  /* -----
-    Each animal photo DIV is set with a #ID of the animal type;
-    This captures the div's ID, which is saved to a global app.breed variable
-    Variable is used to populate the form's animal type field (  in populateFields() )
-  ----- */
+
   breedType: function(event) {
-    this.breed = event.target.id.toString() ;
-    console.log(this.breed);
+    var self = this;
+    console.log(event);
+    if (!(event.target.id)) {
+      self.breed = event.target.parentElement.id;
+    }
+    else {
+      self.breed = event.target.id;
+    }
+    console.log(self.breed)
     $('#upload-photo').trigger('click');
   },
 
@@ -551,6 +554,7 @@ App.Views.UploadSighting = Backbone.View.extend({
       }
 
       function mapListener() {
+        console.log('map click');
         //Adds click and drop pin capability to Google Map
           //Saves value of lat/long to Location variable (at top)
         map.addListener('click', function(mapClickEvent) {

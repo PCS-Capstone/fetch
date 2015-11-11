@@ -1,17 +1,17 @@
 // ===========================
 // Handlebars Template Strings
-// 
+//
 // 1. Search for Pets
 // 2. Uploading a Pet
-// 3. Google Maps 
+// 3. Google Maps
 // ===========================
 
 
 
 /****************************************************
-***************************************************** 
-          SEARCHING-FOR-PET TEMPLATES 
-*****************************************************          
+*****************************************************
+          SEARCHING-FOR-PET TEMPLATES
+*****************************************************
 *****************************************************/
 
 // Searchform
@@ -167,92 +167,100 @@ App.Templates['template-no-results'] =
 
 
 
-/**************************************************** 
+/****************************************************
 *****************************************************
-        UPLOADING-A-SIGHTING TEMPLATES 
+        UPLOADING-A-SIGHTING TEMPLATES
 *****************************************************
 ****************************************************/
 
 // Upload Form
 // -----------
 App.Templates['template-upload-sighting'] =
-  '<div id="map" class="display-none"> </div>' +
-  
-  '  <form id="upload-form" class="form-horizontal">' +
-  
-  '    <div class="row">' +
-  '      <div id="previewHolderDiv" class="display-none col-sm-6 col-sm-offset-3">' +
-  '        <img id="previewHolder"  class="display-none" alt=""/>' +
-  '      </div>' +
-  '    </div>' +
-  
-  '    <div class="row">' +
-  '      <div id="upload-photo-div" class="col-sm-offset-1 col-sm-10">' +
-  
-  '        <div class="row">' +
-  
-  '          <div class="col-sm-6 col-md-4 animal-photo-div">' +
-  '            <div id="Dog">' +
-  '              <h3> Dog </h3>' +
-  '            </div>' +
-  '          </div>' +
-  
-  '          <div class="col-sm-6 col-md-4 animal-photo-div">' +
-  '            <div id="Cat">' +
-  '              <h3> Cat </h3>' +
-  '            </div>' +
-  '          </div>' +
-  
-  '          <div class="col-sm-6 col-md-4 animal-photo-div">' +
-  '            <div id="Bird">' +
-  '              <h3> Bird </h3>' +
-  '            </div>' +
-  '          </div>' +
-  
-  '          <div class="col-sm-6 col-md-4 animal-photo-div">' +
-  '            <div id="Small-Furry">' +
-  '              <h3> Small & Furry </h3>' +
-  '            </div>' +
-  '          </div>' +
-  
-  '          <div class="col-sm-6 col-md-4 animal-photo-div">' +
-  '            <div id="Scales-Fins" >' +
-  '              <h3> Scales and Fins </h3>' +
-  '            </div>' +
-  '          </div>' +
-  
-  '          <div class="col-sm-6 col-md-4 animal-photo-div">' +
-  '            <div id="Barnyard">' +
-  '              <h3> Barnyard </h3>' +
-  '            </div>' +
-  '          </div>' +
-  '        </div>' +
-  '      </div>' +
-  '    </div>' +
-  
+'<div id="map" class="display-none"> </div>' +
+
+'<form id="upload-form" class="form-horizontal">' +
+  '<div class="row">'+
+    '<div id="previewHolderDiv" class="display-none col-sm-6 col-sm-offset-3">'+
+      '<img id="previewHolder"  class="display-none" alt=""/>'+
+    '</div>'+
+  '</div>'+
+'  <div class="row">'+
+    '<div id="upload-photo-div" class="col-sm-offset-1 col-sm-10">'+
+    '<div class="row">'+
+      '<div class="col-xs-10 col-xs-offset-1">'+
+        '<h1> Have You Found a Lost Pet? </h1>'+
+        '<p> Some text...</p>'+
+      '</div>'+
+    '</div>'+
+    '<div class="row">'+
+      '<div id="upload-camera">'+
+        '<span class="glyphicon glyphicon-camera" aria-hidden="true"></span>'+
+      '</div>'+
+    '</div>'+
+      '<div class="row" id="upload-animals">'+
+        '<div class="col-sm-6 col-md-4 animal-photo-div">'+
+          '<div id="Dog">'+
+            '<h3> Dog </h3>'+
+            '<span class="glyphicon glyphicon-cloud-upload" aria-hidden="true"></span>'+
+          '</div>'+
+        '</div>'+
+        '<div class="col-sm-6 col-md-4 animal-photo-div">'+
+          '<div id="Cat">'+
+            '<h3> Cat </h3>'+
+            '<span class="glyphicon glyphicon-cloud-upload" aria-hidden="true"></span>'+
+          '</div>'+
+      '  </div>'+
+        '<div class="col-sm-6 col-md-4 animal-photo-div">'+
+          '<div id="Bird">'+
+            '<h3> Bird </h3>'+
+            '<span class="glyphicon glyphicon-cloud-upload" aria-hidden="true"></span>'+
+          '</div>'+
+        '</div>'+
+        '<div class="col-sm-6 col-md-4 animal-photo-div">'+
+          '<div id="Small-Furry">'+
+            '<h3> Small & Furry </h3>'+
+            '<span class="glyphicon glyphicon-cloud-upload" aria-hidden="true"></span>'+
+          '</div>'+
+        '</div>'+
+        '<div class="col-sm-6 col-md-4 animal-photo-div">'+
+          '<div id="Scales-Fins" >'+
+            '<h3> Scales and Fins </h3>'+
+            '<span class="glyphicon glyphicon-cloud-upload" aria-hidden="true"></span>'+
+          '</div>'+
+        '</div>'+
+        '<div class="col-sm-6 col-md-4 animal-photo-div">'+
+          '<div id="Barnyard">'+
+            '<h3> Barnyard </h3>'+
+            '<span class="glyphicon glyphicon-cloud-upload" aria-hidden="true"></span>'+
+          '</div>'+
+        '</div>'+
+      '</div>'+
+    '</div>'+
+'  </div>'+
+
   '    <div class="form-group hidden">' +
   '      <input type="file" name="photo" value="" id="upload-photo" class="required borrowerImageFile" data-errormsg="PhotoUploadErrorMsg" accept="image/*">' +
   '      </input>' +
   '    </div>' +
-  
+
   '    <div id="reveal-form" class="display-none">' +
-  
+
   '      <div id="previewHolderButtonDiv" class="text-center display-none">' +
   '        <button id="previewHolderButton" type="button" class="btn btn-info"><span class="glyphicon glyphicon-edit " aria-hidden="true"></span> Change Photo </button>' +
   '      </div>' +
-  
+
   '      <div class="row">' +
   '        <div class="col-sm-2 text-right">' +
   '          <em>** Required Fields</em>' +
   '        </div>' +
   '      </div>' +
-  
-  
+
+
   '      <div class="form-group">' +
   '        <label for="uploadSpecies" class="col-sm-2 control-label">' +
   '          ** Type of Animal:' +
   '        </label>' +
-  
+
   '        <div class="col-sm-9 col-lg-8">' +
   '          <select id="uploadSpecies" class="form-control" name="animal-type" aria-required="true" required>' +
   '            <option value="" disabled selected>"What kind of animal is it?"</option>' +
@@ -265,7 +273,7 @@ App.Templates['template-upload-sighting'] =
   '          </select>' +
   '        </div>' +
   '      </div>' +
-  
+
   '      <div class="form-group">' +
   '        <label for="uploadLocation" class="col-sm-2 control-label">' +
   '          ** Location:' +
@@ -275,14 +283,14 @@ App.Templates['template-upload-sighting'] =
   '          <button type="button" id="uploadLocationButton" class="btn btn-info pull-left display-none"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Edit Location</button>' +
   '        </div>' +
   '      </div>' +
-  
+
   '      <div class="form-group">' +
   '        <label for="uploadDate" class="col-sm-2 control-label">' +
   '          ** Date:' +
   '        </label> ' +
   '        <div class="col-sm-9 col-md-4  input-append date" id="uploadDateDiv" data-date="" data-date-format="yyyy-mm-dd">' +
   '          <input id="uploadDate" class="form-control span2" type="text" readonly="readonly" name="date" value="" maxlength="10" placeholder="Date" aria-required="true" required>' +
-  
+
   '          <span class="add-on"><i class="icon-th"></i></span>' +
   '        </div>' +
   '      </div>' +
@@ -406,7 +414,7 @@ App.Templates['template-upload-error'] =
 
 /****************************************************
 *****************************************************
-              GOOGLE MAPS TEMPLATES 
+              GOOGLE MAPS TEMPLATES
 *****************************************************
 ****************************************************/
 
@@ -428,9 +436,3 @@ App.Templates['template-infowindow'] =
   '      </div>' +
   '    </div>' +
   '  {{/if }}';
-
-
-
-
-
-
