@@ -100,8 +100,6 @@ App.Views.UploadSighting = Backbone.View.extend({
 
   populateFields : function() {
     //Resets lat/lng each time photo is uploaded
-    // self.location.lat = null;
-    // self.location.lng = null;
 
     var $imageField = $('#upload-photo');
     var $imagePreview = $('#previewHolder');
@@ -164,6 +162,7 @@ App.Views.UploadSighting = Backbone.View.extend({
       //If geolocation exif data is abset, googleAutocomplete is called - which:
         //Adds google autocomplete feature to location field;
         //Attaches map
+        console.log('exif', this.exif)
       $('#reveal-form').removeClass('display-none');
 
       if ( !(exifData.GPSLatitude) || !(exifData.GPSLongitude) ) {
@@ -289,10 +288,11 @@ App.Views.UploadSighting = Backbone.View.extend({
     //Reads exif data of image; passes exif data as argument into readerFromExif() function above
     function getExifData ( ) {
       var image = $imageField[0].files[0];
+      var self = this;
 
       EXIF.getData(image, function() {
         var xf = EXIF( this ).EXIFwrapped.exifdata;
-        this.exif = xf;
+        self.exif = xf;
         readFromExif(xf);
       });
     }
