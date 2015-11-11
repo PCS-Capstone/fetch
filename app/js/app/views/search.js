@@ -23,7 +23,6 @@ App.Views.SearchForm = Backbone.View.extend({
 
   render: function(){
     console.log('render')
-    App.Config.CurrentView = this;
 
     if (App.Config.SearchParameters.animalType !== undefined) {
       JSON.parse(App.Config.SearchParameters.location)
@@ -229,7 +228,6 @@ App.Views.Results = Backbone.View.extend({
 
   render: function() {
     console.log('results view');
-    App.Config.CurrentView = this;
     this.$el.html( this.template(App.Config.SearchParameters) );
     this.$el.prependTo('#master');
 
@@ -240,18 +238,18 @@ App.Views.Results = Backbone.View.extend({
 
     // console.log('JSON PARSE', JSON.parse(App.SearchParameters.location));
 
-    app.mapView = new App.Views.Map({
+    app.views.map = new App.Views.Map({
       collection : app.collection,
       center: App.Config.SearchParameters.location
     });
 
     app.collection.forEach(function(pet) {
       console.log('collection', self.collection)
-      app.tileView = new App.Views.Tile({
+      app.views.tile = new App.Views.Tile({
           model : pet
           // mapView : app.mapView
       });
-      self.$el.append(app.tileView.$el)
+      self.$el.append(app.views.tile.$el)
 
     });
 
@@ -278,8 +276,6 @@ App.Views.Results = Backbone.View.extend({
     }
 
     // App.Config.SearchParameters.location = JSON.parse(App.Config.SearchParameters.location);
-
-    App.Config.CurrentView.remove();
     app.router.navigate('search', {trigger : true, replace: true})
 
   },
@@ -289,24 +285,24 @@ App.Views.Results = Backbone.View.extend({
     var self = this;
     $('.lost-pet').hide();
     $('#map').show();
-    google.maps.event.trigger(self.mapView.map, 'resize'); //magically fixes window resize problem http://stackoverflow.com/questions/13059034/how-to-use-google-maps-event-triggermap-resize
+    google.maps.event.trigger(app.map, 'resize'); //magically fixes window resize problem http://stackoverflow.com/questions/13059034/how-to-use-google-maps-event-triggermap-resize
 
-    app.mapView.map.setZoom(15);
+    app.map.setZoom(15);
     // console.log( app.searchParameters.location );
     // console.log( typeof self.searchParameters.location)
-    app.mapView.map.setCenter( JSON.parse(App.Config.SearchParameters.location) );
+    app.map.setCenter( JSON.parse(App.Config.SearchParameters.location) );
     
     // http://stackoverflow.com/questions/19304574/center-set-zoom-of-map-to-cover-all-markers-visible-markers
     var bounds = new google.maps.LatLngBounds();
 
-    app.mapView.markers.forEach( function(marker){
-      marker.setMap(app.mapView.map);
+    app.views.map.markers.forEach( function(marker){
+      marker.setMap(app.map);
       bounds.extend(marker.getPosition());
     });
 
-    app.mapView.map.setCenter(bounds.getCenter());
-    app.mapView.map.fitBounds(bounds);
-    app.mapView.map.setZoom(app.mapView.map.getZoom()-1);
+    app.map.setCenter(bounds.getCenter());
+    app.map.fitBounds(bounds);
+    app.map.setZoom(app.map.getZoom()-1);
 
   //   console.log('ResultsView.showMapView()')
   //   // console.log( 'searchParams:', this.searchParameters );
@@ -358,6 +354,7 @@ App.Views.Tile = Backbone.View.extend({
    template: Handlebars.compile(App.Templates['template-tile-view']),
 
   render: function() {
+    console.log('tile view render')
     this.$el.html( this.template(this.model.get('value') ) );
   },
 
@@ -419,17 +416,18 @@ App.Views.Tile = Backbone.View.extend({
     showModal();
     $modal.find('button').click(hideModal);
 
-    google.maps.event.trigger(app.mapView.map, 'resize');
-    app.mapView.map.setCenter(this.model.get('value').location);
-    app.mapView.map.setZoom(18);
-    app.mapView.markers.forEach( function(marker){
+    google.maps.event.trigger(app.map, 'resize');
+    app.map.setCenter(this.model.get('value').location);
+    app.map.setZoom(18);
+
+    app.views.map.markers.forEach( function(marker){
 
       // console.log( marker.modelId );
       // console.log( self.model.get('path').key );
       if ( marker.modelId !== self.model.get('path').key ) {
         marker.setMap(null);
       } else {
-        marker.setMap(self.mapView.map);
+        marker.setMap(app.map);
       }
       // var markerLat = marker.position.lat();
       // var markerLng = marker.position.lng();
@@ -519,8 +517,11 @@ App.Views.Map = Backbone.View.extend({
     //   zoom: 15, //need to incorporate radius math.
     //   disableDefaultUI: true
     // });
+    
+    app.map = new google.maps.Map(document.getElementById('map'), 
+      {center : center, zoom : 15, disableDefaultUI : true})
 
-    app.map = new App.Maps({center : center, zoom : 15, disableDefaultUI : true})
+    // app.map = new google.maps.Map(document.get)
 
     //console.log( 'MapView.map', this.map );
     //console.log( this.map.center );

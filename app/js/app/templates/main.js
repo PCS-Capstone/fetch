@@ -379,8 +379,8 @@ App.Templates['template-successful-submission'] =
   '    <p>3. Contact a local veterinary clinic to see if they have the capabilities to scan the' +
   '    animal for an identification chip.  Some pet owners have identifing chips surgically placed' +
   '    in their animal that contain their contact information, and some veterinary offices have the' +
-  '    ability to scan the animal to check for these chips and they can help contact the owner.</p>';
-
+  '    ability to scan the animal to check for these chips and they can help contact the owner.</p>' +
+      '<div id="map"</div>'
 
 
 // Error on Upload
