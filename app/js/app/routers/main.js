@@ -1,12 +1,12 @@
 App.Routers.Router = Backbone.Router.extend({
 	routes: {
-		      '' : 'index',
+		        '' : 'index',
      	'search' : 'search',
 	  'sighting' : 'sighting',
 	   'results' : 'results',
 	 'noResults' : 'noResults',
 	'successful' : 'successful',
-		 'error' : 'error'
+		   'error' : 'error'
 	},
 
   removeAllViews: function () {
