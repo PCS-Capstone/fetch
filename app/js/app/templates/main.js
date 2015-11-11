@@ -140,12 +140,12 @@ App.Templates['template-tile-view'] =
   '    {{#if colors}}' + 
         '<h4>Color: {{#each colors}} {{this}} {{/each}}' +
         '{{/if}}</h4>' +
+          '  <h4>Last seen: {{displayDate}} at {{displayTime}} near {{address}}</h4>' +
   '  </div>' +
   '</div>' +
 
   '<div class="flex-row">' +
   '  <button class="btn btn-info btn-lg">Location/Map</button>' +
-  '  <h4>Last seen: {{displayDate}} at {{displayTime}} near {{address}}</h4>' +
   '</div>' +
 
   '{{#if description}}' +
@@ -189,7 +189,7 @@ App.Templates['template-upload-sighting'] =
     '<div class="row">'+
       '<div class="col-xs-10 col-xs-offset-1">'+
         '<h1> Have You Found a Lost Pet? </h1>'+
-        '<p> Some text...</p>'+
+        '<p class="text-center"> What kind of animal is it?</p>'+
       '</div>'+
     '</div>'+
     '<div class="row">'+
