@@ -258,7 +258,8 @@ textarea {
 .upload
 .animal-photo-div {
   height: 200px;
-  margin: 15px 0;
+  margin: 15px auto;
+  max-width: 350px;
 }
 .upload
 .animal-photo-div div {
@@ -266,7 +267,7 @@ textarea {
   width: 100%;
   text-align: center;
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: 100% 100%;
 }
 .upload
 .animal-photo-div h3 {
@@ -274,32 +275,90 @@ textarea {
   display: block;
   background-color: #3A3938;
   position: relative;
-  top: 175px;
+  top: 170px;
   color: white;
 }
+
 .upload
 #Dog {
-  background-image: url('http://blogs.psychcentral.com/life-goals/files/2014/09/cute-dog-pup.jpg');
+  background-image: url('../img/dog.jpg');
 }
 .upload
 #Cat {
-  background-image: url('http://dreamatico.com/data_images/cat/cat-6.jpg')
+  background-image: url('../img/cat.jpg')
 }
 .upload
 #Bird {
-  background-image: url('http://www.usapetconnect.com/article-images/pet-birds.jpg')
+  background-image: url('../img/bird.jpg')
 }
 .upload
 #Small-Furry{
-  background-image: url('http://images.sodahead.com/polls/002838879/4510255634_27309404_xlarge.jpeg')
+  background-image: url('../img/furry.jpg')
 }
 .upload
 #Scales-Fins {
-  background-image: url('http://petful.supercopyeditors.netdna-cdn.com/wp-content/uploads/2011/11/pet-snake-skin-problems.png')
+  background-image: url('../img/reptile.jpg')
 }
 .upload
 #Barnyard {
   background-image: url('http://www.spcacanterbury.org.nz/assets/Images/horse.jpg')
+}
+
+.upload
+#upload-camera {
+  font-size: 5em;
+  color: #009688;
+  text-align: center;
+  background: white;
+  width: 150px;
+  margin: 0 auto;
+  position: relative;
+  top: 30px;
+}
+
+.upload
+#upload-camera .glyphicon {
+  display: inline-block;
+  padding: 15px 0;
+  position: relative;
+  top: 30px;
+  font-size: 1em;
+}
+
+.upload
+#upload-animals {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border: 1px solid rgba(0, 150, 136, 0.23);
+  margin-bottom: 20px;
+}
+
+.upload
+#upload-animals h3 {
+  background: rgba(119, 118, 117, 0.86);
+  color: #FFFFFF;
+  font-weight: lighter;
+  box-shadow: 1px 1px 1px #1D9490;
+  font-size: 1.25em;
+  padding: 5px;
+}
+
+.upload
+#upload-animals .glyphicon {
+  font-size: 4em;
+  color: #009688;
+  opacity: 0;
+  transition: all 0.5s ease;
+  text-align: center;
+  margin: 0 auto;
+}
+.upload
+#upload-animals .glyphicon:hover {
+  opacity: 1;
+}
+.upload
+#upload-animals .glyphicon:active {
+  color: white;
 }
 
 /*
