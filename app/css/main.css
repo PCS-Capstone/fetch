@@ -361,6 +361,38 @@ textarea {
   color: white;
 }
 
+.color {
+  margin-top: 5px;
+  margin-right: 5px;
+}
+
+#white {
+  background-color: whitesmoke;
+}
+#black {
+  background-color: black;
+  color: white;
+}
+#brown {
+  background-color: #86561F;
+  color: white;
+}
+#orange {
+  background-color: orange;
+}
+#yellow {
+  background-color: yellow;
+}
+#gray {
+  background-color: gray;
+  color: white;
+}
+
+#color-group {
+  margin-left: 25px;
+  padding-left: 10px;
+}
+
 /*
 END SIGHTING
 --------------------

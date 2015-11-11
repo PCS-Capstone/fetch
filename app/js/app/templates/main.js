@@ -318,38 +318,38 @@ App.Templates['template-upload-sighting'] =
   '        <label class="col-sm-2 control-label">' +
   '            ** Color:' +
   '        </label>' +
-  '        <fieldset aria-required="true" required>' +
-  '          <div id="white" class="col-sm-3 col-md-2 pull-left">' +
+  '        <fieldset id="color-group" aria-required="true" required>' +
+  '          <div id="white" class="color col-sm-3 col-md-2 pull-left">' +
   '            <input id="uploadWhite" type="checkbox" name="color-group" value="White" aria-label="uploadWhite">' +
   '            <label for="uploadWhite">' +
   '              White' +
   '            </label>' +
   '          </div>' +
-  '          <div id="black" class="col-sm-3 col-md-2 pull-left">' +
+  '          <div id="black" class="color col-sm-3 col-md-2 pull-left">' +
   '            <input id="uploadBlack" type="checkbox" name="color-group" value="Black">' +
   '            <label for="uploadBlack">' +
   '              Black' +
   '            </label>' +
   '          </div>' +
-  '          <div id="brown" class="col-sm-3 col-md-2 pull-left">' +
+  '          <div id="brown" class="color col-sm-3 col-md-2 pull-left">' +
   '            <input id="uploadBrown" type="checkbox" name="color-group" value="Brown">' +
   '            <label for="uploadBrown">' +
   '              Brown' +
   '            </label>' +
   '          </div>' +
-  '          <div id="orange" class="col-sm-3 col-md-2 pull-left">' +
+  '          <div id="orange" class="color col-sm-3 col-md-2 pull-left">' +
   '            <input id="uploadOrange" type="checkbox" name="color-group" value="Orange">' +
   '            <label for="uploadOrange">' +
   '              Orange' +
   '            </label>' +
   '          </div>' +
-  '          <div id="yellow" class="col-sm-3 col-md-2 pull-left">' +
+  '          <div id="yellow" class="color col-sm-3 col-md-2 pull-left">' +
   '            <input id="uploadYellow" type="checkbox" name="color-group" value="Yellow">' +
   '            <label for="uploadYellow">' +
   '              Yellow' +
   '            </label>' +
   '          </div>' +
-  '          <div id="gray" class="col-sm-3 col-md-2 pull-left">' +
+  '          <div id="gray" class="color col-sm-3 col-md-2 pull-left">' +
   '            <input id="uploadGray" type="checkbox" name="color-group" value="Gray">' +
   '            <label for="uploadGray">' +
   '              Gray' +

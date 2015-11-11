@@ -72,14 +72,12 @@ App.Views.UploadSighting = Backbone.View.extend({
 
   breedType: function(event) {
     var self = this;
-    console.log(event);
     if (!(event.target.id)) {
       self.breed = event.target.parentElement.id;
     }
     else {
       self.breed = event.target.id;
     }
-    console.log(self.breed)
     $('#upload-photo').trigger('click');
   },
 
@@ -149,7 +147,6 @@ App.Views.UploadSighting = Backbone.View.extend({
 
     //Uses Google Geocoder to convert lat/long into address; inputs address into form's location field
     function codeAddress() {
-      // console.log('code address running');
       geocoder = new google.maps.Geocoder;
       geocoder.geocode( { 'location': {lat: self.loc.lat, lng: self.loc.lng}}, function(results, status) {
         $('#uploadLocation').val(results[0].formatted_address);
@@ -171,7 +168,6 @@ App.Views.UploadSighting = Backbone.View.extend({
       }
       //Runs if geolocation data exists
       else {
-        console.log('read form exif running');
         // This rotates the image correctly based on exif data's noted orientation;
         // Rotation classes are also removed each time a new photo is uploaded
 
@@ -212,27 +208,21 @@ App.Views.UploadSighting = Backbone.View.extend({
 
         //Run codeAddress() to display street address in form's location input field
         codeAddress();
-        console.log('lat/lng from exif prior to pretty address', self.loc.lat, self.loc.lng)
       }
 
       //Reads and converts exif data's timestamp into usable format
       if (exifData.DateTime) {
 
         var dateTime = exifData.DateTime.split(' ')[0].split(':').join('-');
-        console.log('dateTime = ' + dateTime);
 
         displayDate = exifData.DateTime.split(' ')[0];
-        console.log(displayDate);
 
         displayTime = exifData.DateTime.split(' ')[1];
-        console.log(displayTime)
 
         displayDate = (displayDate.split(':'));
         xYear = displayDate[0];
         xMonth = displayDate[1];
         xDay = displayDate[2];
-
-        console.log(displayDate);
 
         $('#uploadDate').val(xMonth + '-' + xDay + '-' + xYear );
 
@@ -322,7 +312,6 @@ App.Views.UploadSighting = Backbone.View.extend({
     event.preventDefault();
 
     var self = this;
-    console.log( 'this.lat/long=', self.loc.lat, '/', self.loc.lng);
 
     var requestObject = {};
 
@@ -368,16 +357,12 @@ App.Views.UploadSighting = Backbone.View.extend({
       }
 
       var xDate = date.split('-');
-      console.log('xDate is:' + xDate);
 
       var xYear = xDate[2];
-      console.log('xYear is: ' + xYear);
 
       var xMonth = month['m' + xDate[0]];
-      console.log('xMonth is: ' + xMonth);
 
       var xDay = xDate[1];
-      console.log('xDay is: ' + xDay);
 
       requestObject.displayDate = xMonth + ' ' + xDay + ', ' + xYear;
       })();
@@ -513,7 +498,6 @@ App.Views.UploadSighting = Backbone.View.extend({
       //Geocoder sends a request using lat/long;
       //Takes first (formatted address) result and sets location input form field to value
     function codeAddress() {
-      console.log('code address lat/lng', self.loc.lat, self.loc.lng)
       geocoder.geocode( { 'location': {lat: self.loc.lat, lng: self.loc.lng}}, function(results, status) {
         $('#uploadLocation').val(results[0].formatted_address);
       });
@@ -554,7 +538,6 @@ App.Views.UploadSighting = Backbone.View.extend({
       }
 
       function mapListener() {
-        console.log('map click');
         //Adds click and drop pin capability to Google Map
           //Saves value of lat/long to Location variable (at top)
         map.addListener('click', function(mapClickEvent) {
