@@ -13,7 +13,7 @@
           SEARCHING-FOR-PET TEMPLATES 
 *****************************************************          
 *****************************************************/
-
+  
 // Searchform
 // ----------
 App.Templates['template-searchform'] =
@@ -380,9 +380,7 @@ App.Templates['template-successful-submission'] =
   '    animal for an identification chip.  Some pet owners have identifing chips surgically placed' +
   '    in their animal that contain their contact information, and some veterinary offices have the' +
   '    ability to scan the animal to check for these chips and they can help contact the owner.</p>' +
-  '<div id="map"></div>';
-
-
+  '    <div id="map"></div>';
 
 // Error on Upload
 // ---------------

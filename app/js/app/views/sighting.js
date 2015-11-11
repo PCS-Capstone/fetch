@@ -15,7 +15,6 @@ App.Views.UploadSighting = Backbone.View.extend({
    template: Handlebars.compile(App.Templates['template-upload-sighting']),
 
   render: function() {
-    App.Config.CurrentView = this;
     this.$el.html( this.template() );
     $('#master').append(this.$el);
     /*  -----
@@ -421,7 +420,8 @@ App.Views.UploadSighting = Backbone.View.extend({
           data: { data : JSON.stringify(requestObject) },
           success: function(data) {
             if (data === true) {
-              App.Config.CurrentView.remove();
+              app.lat = self.loc.lat;
+              app.lng = self.loc.lng;
               app.router.navigate('successful', {trigger : true})
             }
             else {
