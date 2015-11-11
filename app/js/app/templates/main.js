@@ -17,7 +17,7 @@
 // Searchform
 // ----------
 App.Templates['template-searchform'] =
-  '<form class="form-horizontal" novalidate>' +
+  '<form class="form-horizontal">' +
   '  <div class="form-group" id="search-form">' +
   '    <label class="control-label col-xs-2 required"> **Required fields</label>' +
   '  </div>' +
@@ -308,9 +308,9 @@ App.Templates['template-upload-sighting'] =
   '      </div>' +
   '      <div class="form-group">' +
   '        <label class="col-sm-2 control-label">' +
-  '            Please select color:' +
+  '            ** Color:' +
   '        </label>' +
-  '        <fieldset>' +
+  '        <fieldset aria-required="true" required>' +
   '          <div id="white" class="col-sm-3 col-md-2 pull-left">' +
   '            <input id="uploadWhite" type="checkbox" name="color-group" value="White" aria-label="uploadWhite">' +
   '            <label for="uploadWhite">' +

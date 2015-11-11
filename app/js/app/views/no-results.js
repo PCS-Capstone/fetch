@@ -8,7 +8,6 @@ App.Views.NoResults = Backbone.View.extend({
    template: Handlebars.compile(App.Templates['template-no-results']),
 
   render: function() {
-    currentView = this;
     this.$el.html( this.template() )
     this.$el.appendTo('#master');
   },
@@ -24,9 +23,7 @@ App.Views.NoResults = Backbone.View.extend({
 
   searchAgain: function() {
   	var self = this;
-
-  	this.remove();
-    router.navigate('search', {trigger : true});
+    app.router.navigate('search', {trigger : true});
 
   }
 })

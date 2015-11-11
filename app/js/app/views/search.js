@@ -25,7 +25,7 @@ App.Views.SearchForm = Backbone.View.extend({
     console.log('render')
 
     if (App.Config.SearchParameters.animalType !== undefined) {
-      JSON.parse(App.Config.SearchParameters.location)
+      // JSON.parse(App.Config.SearchParameters.location)
       console.log('edit search')
       this.prePopulate();
     } else {
@@ -148,18 +148,18 @@ App.Views.SearchForm = Backbone.View.extend({
 
     event.preventDefault();
 
-    var shortAddress = $('input[name="address"]').val().split(',');
-    shortAddress.splice((shortAddress.length)-1);
+    // var shortAddress = $('input[name="address"]').val().split(',');
+    // shortAddress.splice((shortAddress.length)-1);
 
-    // var prettyStartDate = $('input[name="start-date"]').val().split('/');
-    // prettyStartDate = (month[(prettyStartDate[0]) -1] + " " + prettyStartDate[1] +
-    //   ', ' + prettyStartDate[2]);
-    // console.log('pretty start date', prettyStartDate);
+    var prettyStartDate = $('input[name="start-date"]').val().split('/');
+    prettyStartDate = (month[(prettyStartDate[0]) -1] + " " + prettyStartDate[1] +
+      ', ' + prettyStartDate[2]);
+    console.log('pretty start date', prettyStartDate);
 
-    // var prettyEndDate = $('input[name="end-date"]').val().split('/');
-    // prettyEndDate = (month[(prettyEndDate[0]) -1] + " " + prettyEndDate[1] +
-    //   ', ' + prettyEndDate[2]);
-    // console.log('pretty end date', prettyEndDate);
+    var prettyEndDate = $('input[name="end-date"]').val().split('/');
+    prettyEndDate = (month[(prettyEndDate[0]) -1] + " " + prettyEndDate[1] +
+      ', ' + prettyEndDate[2]);
+    console.log('pretty end date', prettyEndDate);
 
     // var startDate = $('input[name="start-date"]').val().split('/');
     // startDate = startDate[2] + '-' + startDate[0] + '-' + startDate[1];
@@ -172,10 +172,12 @@ App.Views.SearchForm = Backbone.View.extend({
     App.Config.SearchParameters = {
         startDate : $('input[name="start-date"]').val(),
           endDate : $('input[name="end-date"]').val(),
-  prettyStartDate : null,
-    prettyEndDate : null,
-          address : shortAddress,
-         location : JSON.stringify(App.Config.SearchParameters.location),
+  prettyStartDate : prettyStartDate,
+    prettyEndDate : prettyEndDate,
+          address : $('input[name="address"]').val(),
+         location : typeof App.Config.SearchParameters.location === 'string' ? 
+                  App.Config.SearchParameters.location : 
+                  JSON.stringify(App.Config.SearchParameters.location),
            radius : $('input[name="radius"]').val(),
        animalType : $('option:selected').val(),
            colors : $('input[name="color-group"]:checked').map( function(){ return this.value } ).toArray()
@@ -197,21 +199,6 @@ App.Views.SearchForm = Backbone.View.extend({
 
         });
     // this.validate();
-
-    // if(app.searchParameters)
-
-    // this.remove();
-    // console.log('location', app.searchParameters.location)
-
-
-    // console.log( 'searchForm on submit location:', self.location)
-
-    // only works upon first try, does not work with edit because
-    // there's only one fetch call.
-    // We want to use conditional prior to ResultsView being rendered
-    // if there are no search results found
-    // where do we put it?
-
   
   }
 });
