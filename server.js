@@ -6,6 +6,7 @@ var config = require('./config');
 var db     = require('orchestrate')(config.dbkey);
 
 var app = express();
+app.set('port', (process.env.PORT || 5000));
 
 app.use(logger('dev'));
 app.use(bodyParser.json());
@@ -83,8 +84,9 @@ app.post('/pet', function(request, response) {
 
 });
 
-app.listen(3000);
-console.log( 'listening on PORT:3000' );
+app.listen(app.get('port'), function(){
+  console.log( 'listening on PORT:3000' );
+});
 
 //cloudinary.api.delete_all_resources(function(result){})
 
