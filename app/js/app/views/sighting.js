@@ -69,14 +69,17 @@ App.Views.UploadSighting = Backbone.View.extend({
     'click .animal-photo-div' : 'breedType',
   },
 
-  /* -----
-    Each animal photo DIV is set with a #ID of the animal type;
-    This captures the div's ID, which is saved to a global app.breed variable
-    Variable is used to populate the form's animal type field (  in populateFields() )
-  ----- */
+
   breedType: function(event) {
-    this.breed = event.target.id.toString() ;
-    console.log(this.breed);
+    var self = this;
+    console.log(event);
+    if (!(event.target.id)) {
+      self.breed = event.target.parentElement.id;
+    }
+    else {
+      self.breed = event.target.id;
+    }
+    console.log(self.breed)
     $('#upload-photo').trigger('click');
   },
 
@@ -97,8 +100,6 @@ App.Views.UploadSighting = Backbone.View.extend({
 
   populateFields : function() {
     //Resets lat/lng each time photo is uploaded
-    // self.location.lat = null;
-    // self.location.lng = null;
 
     var $imageField = $('#upload-photo');
     var $imagePreview = $('#previewHolder');
@@ -161,6 +162,7 @@ App.Views.UploadSighting = Backbone.View.extend({
       //If geolocation exif data is abset, googleAutocomplete is called - which:
         //Adds google autocomplete feature to location field;
         //Attaches map
+        console.log('exif', this.exif)
       $('#reveal-form').removeClass('display-none');
 
       if ( !(exifData.GPSLatitude) || !(exifData.GPSLongitude) ) {
@@ -286,10 +288,11 @@ App.Views.UploadSighting = Backbone.View.extend({
     //Reads exif data of image; passes exif data as argument into readerFromExif() function above
     function getExifData ( ) {
       var image = $imageField[0].files[0];
+      var self = this;
 
       EXIF.getData(image, function() {
         var xf = EXIF( this ).EXIFwrapped.exifdata;
-        this.exif = xf;
+        self.exif = xf;
         readFromExif(xf);
       });
     }
@@ -551,13 +554,14 @@ App.Views.UploadSighting = Backbone.View.extend({
       }
 
       function mapListener() {
+        console.log('map click');
         //Adds click and drop pin capability to Google Map
           //Saves value of lat/long to Location variable (at top)
         map.addListener('click', function(mapClickEvent) {
           // location.lat = mapClickEvent.latLng.lat();
           // location.lng = mapClickEvent.latLng.lng();
-          self.location.lat = mapClickEvent.latLng.lat();
-          self.location.lng = mapClickEvent.latLng.lng();
+          self.loc.lat = mapClickEvent.latLng.lat();
+          self.loc.lng = mapClickEvent.latLng.lng();
           createMarker(mapClickEvent);
         });
         //Creates Google Geocoder, which is needed by the codeAddress() function:
