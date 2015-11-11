@@ -74,12 +74,12 @@ App.Views.UploadSighting = Backbone.View.extend({
     var self = this;
     console.log(event);
     if (!(event.target.id)) {
-      this.breed = event.target.parentElement.id;
+      self.breed = event.target.parentElement.id;
     }
     else {
-      this.breed = event.target.id;
+      self.breed = event.target.id;
     }
-    console.log(this.breed)
+    console.log(self.breed)
     $('#upload-photo').trigger('click');
   },
 
