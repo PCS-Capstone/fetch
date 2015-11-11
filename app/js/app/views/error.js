@@ -5,11 +5,11 @@
 App.Views.Error = Backbone.View.extend({
 	tagName: 'section',
   className: 'error',
-   template: Handlebars.compile( $('#template-upload-error').html()),
+   template: Handlebars.compile(App.Templates['template-upload-error']),
 
   render: function() {
     App.Config.CurrentView = this;
-    this.$el.html( this.template({}) )
+    this.$el.html( this.template() )
     this.$el.prependTo('#master');
   },
 

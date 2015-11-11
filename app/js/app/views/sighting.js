@@ -12,7 +12,7 @@ App.Views.UploadSighting = Backbone.View.extend({
 
     tagName: 'div',
   className: 'upload',
-   template: Handlebars.compile( $('#template-upload-sighting').html() ),
+   template: Handlebars.compile(App.Templates['template-upload-sighting']),
 
   render: function() {
     App.Config.CurrentView = this;

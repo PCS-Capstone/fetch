@@ -7,7 +7,7 @@
 App.SearchForm = Backbone.View.extend({
     tagName: 'section',
   className: 'search',
-   template: Handlebars.compile( $('#template-searchform').html() ),
+   template: Handlebars.compile(App.Templates['template-searchform']),
 
   prePopulate : function(){
     this.$el.html( this.template());
@@ -217,7 +217,7 @@ App.Views.Results = Backbone.View.extend({
 
     tagName: 'div',
   className: 'results-view',
-   template: Handlebars.compile( $('#template-results-list').html()),
+   template: Handlebars.compile(App.Templates['template-results-list']),
     mapView: {},
 
   render: function() {
@@ -348,7 +348,7 @@ App.Views.Tile = Backbone.View.extend({
 
     tagName: 'div',
   className: 'lost-pet',
-   template: Handlebars.compile($ ('#template-tile-view').html()),
+   template: Handlebars.compile(App.Templates['template-tile-view']),
 
   render: function() {
     this.$el.html( this.template(this.model.get('value')) );

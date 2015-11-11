@@ -1,7 +1,6 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var logger = require('morgan');
-var pretty = require('prettyjson');
 
 var config = require('./config');
 var db = require('orchestrate')(config.dbkey);
@@ -23,7 +22,7 @@ cloudinary.config( config.cloudinary );
 
 
 app.get('/', function (request, response){
-  response.sendFile( __dirname + '/public/index.html' );
+  response.sendFile( __dirname + '/app/index.html' );
 });
 
 app.get('/pet', function (request, response) {

@@ -5,11 +5,11 @@
 App.Views.NoResults = Backbone.View.extend({
 	tagName: 'section',
   className: 'no-results',
-   template: Handlebars.compile( $('#template-no-results').html()),
+   template: Handlebars.compile(App.Templates['template-no-results']),
 
   render: function() {
     currentView = this;
-    this.$el.html( this.template({}) )
+    this.$el.html( this.template() )
     this.$el.appendTo('#master');
   },
 

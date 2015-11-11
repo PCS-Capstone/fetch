@@ -14,7 +14,7 @@ $(document).ready( function() {
 window.addEventListener('popstate', function(e) {
 	console.log(e)
 	console.log("location " + document.location + ", state: " + JSON.stringify(e.state));
-	console.log('current route', currentRoute)
+
 	//Check if browser is Safari or not
     if (navigator.userAgent.search("Safari") >= 0 && navigator.userAgent.search("Chrome") < 0 && App.Config.Counter === 0) {
     	router.navigate(Backbone.history.getFragment(), {trigger: true, replace: true});
