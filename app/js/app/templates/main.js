@@ -360,22 +360,7 @@ App.Templates['template-upload-sighting'] =
   '      <button type="submit" class="btn btn-primary btn-lg center-block"> Submit </button>' +
   '    <div>' +
   '  </form>' +
-  '  <div id="successfulSubmission" class="col-lg-offset-1 col-lg-10 display-none">  ' +
-  '    <div class="row">' +
-  '      <div class="panel panel-heading panel-success">' +
-  '        <div class="panel-heading">' +
-  '          <h3> Successful Submission! </h3>' +
-  '        </div>' +
-  '        <div class="panel-body">' +
-  '          Some general guidance about finding missing pets.' +
-  '        </div>' +
-  '      </div>' +
-  '    </div>' +
-  '    <div class="row">' +
-  '      <div id="map-submit-container" class="col-lg-offset-1 col-lg-10">' +
-  '      </div>' +
-  '    </div>' +
-  '  </div>';
+  '<div>';
 
 // Sucessful Upload
 // ----------------
