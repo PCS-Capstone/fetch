@@ -24,6 +24,11 @@ app.get('/', function (request, response){
   response.sendFile( __dirname + '/app/index.html' );
 });
 
+// app.get('/:id', function (request, response){
+//   console.log(request.params.id)
+//   response.redirect(__dirname + 'app/js/app/views/' + request.params.id );
+// });
+
 app.get('/pet', function (request, response) {
   console.log(request.query)
 

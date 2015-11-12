@@ -51,6 +51,9 @@ App.Views.UploadSighting = Backbone.View.extend({
       $('#minute-select').append($minuteSelectOption);
     }
   /* ----- */
+
+      $('#lost-pet div').removeClass('trigger-hover');
+      $('#found-pet div').addClass('trigger-hover');
   },
 
   initialize: function( options ){
@@ -446,7 +449,7 @@ App.Views.UploadSighting = Backbone.View.extend({
     /*  ----
         Builds Google Autocomplete Input field
     */
-    //Sets options for Google Autocomplete F
+    //Sets options for Google Autocomplete
     (function() {
       var options = {
         types: ['geocode'],

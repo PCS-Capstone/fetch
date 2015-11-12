@@ -34,6 +34,9 @@ App.Views.SearchForm = Backbone.View.extend({
       $('#master').html(this.$el);
     }
 
+    $('#lost-pet div').addClass('trigger-hover');
+    $('#found-pet div').removeClass('trigger-hover');
+
   },
 
   initialize: function( options ){
@@ -81,7 +84,7 @@ App.Views.SearchForm = Backbone.View.extend({
 
   //   var forms = document.getElementsByTagName('section');
   //   console.log('forms', forms)
-    
+
   //   for (var i = 0; i < forms.length; i++) {
   //     console.log(forms[i])
   //     forms[i].noValidate = true;
@@ -104,7 +107,7 @@ App.Views.SearchForm = Backbone.View.extend({
   //             $("html, body").animate({ scrollTop: 0 }, "slow");
   //             console.log('Form Validation Failed: No Address Selected');
   //           }
-            
+
   //           //Implement you own means of displaying error messages to the user here.
   //       } else {
   //         console.log('else')
@@ -127,12 +130,12 @@ App.Views.SearchForm = Backbone.View.extend({
 
     //   app.collection.fetch({data : app.searchParameters,
     //     success: function(collection, response, options)
-    //       {console.log('success', response); 
+    //       {console.log('success', response);
     //         if (response[0] === undefined) {
     //           router.navigate('noResults', {trigger: true});
     //         } else {
     //           router.navigate('results', {trigger: true});
-    //         } 
+    //         }
     //       }
     //   // error: function(collection, response, options)
     //   // {console.log('error', response); router.navigate('noResults', {trigger: true})}
@@ -175,8 +178,8 @@ App.Views.SearchForm = Backbone.View.extend({
   prettyStartDate : prettyStartDate,
     prettyEndDate : prettyEndDate,
           address : $('input[name="address"]').val(),
-         location : typeof App.Config.SearchParameters.location === 'string' ? 
-                  App.Config.SearchParameters.location : 
+         location : typeof App.Config.SearchParameters.location === 'string' ?
+                  App.Config.SearchParameters.location :
                   JSON.stringify(App.Config.SearchParameters.location),
            radius : $('input[name="radius"]').val(),
        animalType : $('option:selected').val(),
@@ -187,7 +190,7 @@ App.Views.SearchForm = Backbone.View.extend({
 
       app.collection.fetch({data : App.Config.SearchParameters,
         success: function(collection, response, options)
-          {console.log('success', response); 
+          {console.log('success', response);
             if (response[0] === undefined) {
               app.router.navigate('noResults', {trigger : true});
             } else {
@@ -199,7 +202,7 @@ App.Views.SearchForm = Backbone.View.extend({
 
         });
     // this.validate();
-  
+
   }
 });
 
@@ -240,6 +243,9 @@ App.Views.Results = Backbone.View.extend({
 
     });
 
+    $('#lost-pet div').addClass('trigger-hover');
+    $('#found-pet div').removeClass('trigger-hover')
+
   },
 
   initialize: function( options ) {
@@ -278,7 +284,7 @@ App.Views.Results = Backbone.View.extend({
     // console.log( app.searchParameters.location );
     // console.log( typeof self.searchParameters.location)
     app.map.setCenter( JSON.parse(App.Config.SearchParameters.location) );
-    
+
     // http://stackoverflow.com/questions/19304574/center-set-zoom-of-map-to-cover-all-markers-visible-markers
     var bounds = new google.maps.LatLngBounds();
 
@@ -343,6 +349,9 @@ App.Views.Tile = Backbone.View.extend({
   render: function() {
     console.log('tile view render')
     this.$el.html( this.template(this.model.get('value') ) );
+
+    $('#lost-pet div').addClass('trigger-hover');
+    $('#found-pet div').removeClass('trigger-hover')
   },
 
   initialize: function( options ) {
@@ -504,8 +513,8 @@ App.Views.Map = Backbone.View.extend({
     //   zoom: 15, //need to incorporate radius math.
     //   disableDefaultUI: true
     // });
-    
-    app.map = new google.maps.Map(document.getElementById('map'), 
+
+    app.map = new google.maps.Map(document.getElementById('map'),
       {center : center, zoom : 15, disableDefaultUI : true})
 
     // app.map = new google.maps.Map(document.get)

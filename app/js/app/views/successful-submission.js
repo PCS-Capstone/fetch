@@ -11,6 +11,9 @@ App.Views.SuccessfulSubmission = Backbone.View.extend({
     this.$el.html( this.template() );
     this.$el.appendTo('#master');
     this.google(app.lat, app.lng);
+
+    $('#found-pet div').addClass('trigger-hover');
+    $('#lost-pet div').removeClass('trigger-hover');
   },
 
   initialize: function( options ) {
@@ -19,7 +22,7 @@ App.Views.SuccessfulSubmission = Backbone.View.extend({
     console.log('lng', app.lng);
   	_.extend(this, options);
   	this.render();
-    
+
   },
 
   google: function(xLat, xLng) {
@@ -36,7 +39,7 @@ App.Views.SuccessfulSubmission = Backbone.View.extend({
     var infoWindow;
     var marker;
 
-    var center = 
+    var center =
 
     //Adds Google Map of Animal Services/Shelters
     // $('#map').appendTo('#map-submit-container').removeClass('display-none');
@@ -52,7 +55,7 @@ App.Views.SuccessfulSubmission = Backbone.View.extend({
       callback();
     })();
 
-    console.log(map); 
+    console.log(map);
 
     //Sets options of Google Places Request;
       //For each result, a marker is made
