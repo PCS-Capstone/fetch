@@ -323,6 +323,7 @@ App.Views.UploadSighting = Backbone.View.extend({
 
     var self = this;
     console.log( 'this.lat/long=', self.loc.lat, '/', self.loc.lng);
+    console.log('date', $('#uploadDate').val())
 
     var requestObject = {};
 
