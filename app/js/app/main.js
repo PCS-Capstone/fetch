@@ -11,5 +11,4 @@ $(document).ready( function() {
 
   app.collection = new App.Collections.LostPets();
   // app. = google.maps.Map;
-
 });
