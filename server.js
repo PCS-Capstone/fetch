@@ -24,10 +24,11 @@ app.get('/', function (request, response){
   response.sendFile( __dirname + '/app/index.html' );
 });
 
-// app.get('/:id', function (request, response){
-//   console.log(request.params.id)
-//   response.redirect(__dirname + 'app/js/app/views/' + request.params.id );
-// });
+app.get('/search', function (request, response) {
+  console.log('get running: ' + request.params.id);
+
+  response.redirect(__dirname + 'app/js/app/views/search.js');
+});
 
 app.get('/pet', function (request, response) {
   console.log(request.query)

@@ -40,6 +40,7 @@ App.Views.SearchForm = Backbone.View.extend({
   },
 
   initialize: function( options ){
+    console.log('search form initializing');
     var self = this;
     _.extend( this, options );
     this.render();
@@ -567,7 +568,6 @@ App.Views.Map = Backbone.View.extend({
       marker.addListener('mouseout', function(){
         infowindow.close(marker.get('map'), marker);
       });
-
     });
   }
 
