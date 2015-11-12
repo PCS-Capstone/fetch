@@ -22,6 +22,7 @@ html {
 }
 header {
   height: 75px;
+  min-height: 75px;
   width: 100%;
   position: absolute;
   top: 0;
@@ -30,7 +31,45 @@ header {
   text-align: center;
   background-color: #009688;
   box-shadow: 0 0 5px gray;
+  margin: 0;
+  padding: 0;
 }
+header ul {
+  height: inherit;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+header li {
+  height: 75px;
+  display:inline-block;
+  width: 33.3%;
+  float:left;
+}
+header h5 {
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+}
+
+header div {
+  display: inline-block;
+  margin: 0 auto;
+  position: relative;
+  top: 15px;
+  position: relative;
+  padding: 10px;
+  border-bottom: 1px solid whitesmoke;
+  transition: all 1s ease;
+}
+
+header #lost-pet div:hover,
+header #found-pet div:hover,
+.trigger-hover {
+  background: white;
+  color: teal;
+}
+
 /*
 END GLOBAL STYLES
 --------------------
