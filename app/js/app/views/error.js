@@ -27,5 +27,5 @@ App.Views.Error = Backbone.View.extend({
     app.router.navigate('sighting')
     $("#reveal-form").show();
   }
-	
+
 })

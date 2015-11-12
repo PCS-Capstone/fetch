@@ -11,5 +11,18 @@ $(document).ready( function() {
 
   app.collection = new App.Collections.LostPets();
 
-});
+  /*
+  *******************************
+  CREATES HEADER NAVIGATION LINKS:
+    -Redirects on click
+  */
+  $('#lost-pet').click(function() {
+    app.router.navigate('search', {trigger: true});
+  })
+  $('#found-pet').click(function() {
+    app.router.navigate('sighting', {trigger: true});
+  });
 
+/*  ------------------------------  */
+
+});
