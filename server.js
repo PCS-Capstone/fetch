@@ -24,10 +24,6 @@ app.get('/', function (request, response){
   response.sendFile( __dirname + '/app/index.html' );
 });
 
-app.get('/:id', function(request, response) {
-  response.sendFile( __dirname + '/app/index.html' )
-});
-
 app.get('/pet', function (request, response) {
   console.log(request.query)
 
