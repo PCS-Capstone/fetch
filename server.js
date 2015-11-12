@@ -3,7 +3,7 @@ var bodyParser = require('body-parser');
 var logger = require('morgan');
 var config = {};
 
-if (process.env.HEROKU === true ){
+if (process.env.HEROKU === 'true' ){
   config.dbkey = process.env.DBKEY;
   config.cloudinary = {};
   config.cloudinary.cloud_name = process.env.CLOUD_NAME;
