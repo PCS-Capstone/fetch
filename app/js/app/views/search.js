@@ -22,11 +22,9 @@ App.Views.SearchForm = Backbone.View.extend({
   },
 
   render: function(){
-    console.log('render')
-
     if (App.Config.SearchParameters.animalType !== undefined) {
-      // JSON.parse(App.Config.SearchParameters.location)
-      console.log('edit search')
+      console.log('edit search');
+      app.views.map.markers.length = 0;
       this.prePopulate();
     } else {
       console.log('new search')
@@ -140,16 +138,11 @@ App.Views.SearchForm = Backbone.View.extend({
     // }
 
   renderSearchResults: function(event){
-
-    // console.log('address',  $("[name=address]").val().split(','))
     var self = this;
     var month = ['January', 'February', 'March', 'April', 'May', 'June', 'July',
                   'August', 'September', 'October', 'November', 'December'];
 
     event.preventDefault();
-
-    // var shortAddress = $('input[name="address"]').val().split(',');
-    // shortAddress.splice((shortAddress.length)-1);
 
     var prettyStartDate = $('input[name="start-date"]').val().split('/');
     prettyStartDate = (month[(prettyStartDate[0]) -1] + " " + prettyStartDate[1] +
@@ -160,14 +153,6 @@ App.Views.SearchForm = Backbone.View.extend({
     prettyEndDate = (month[(prettyEndDate[0]) -1] + " " + prettyEndDate[1] +
       ', ' + prettyEndDate[2]);
     console.log('pretty end date', prettyEndDate);
-
-    // var startDate = $('input[name="start-date"]').val().split('/');
-    // startDate = startDate[2] + '-' + startDate[0] + '-' + startDate[1];
-    // console.log('db start date', startDate);
-
-    // var endDate = $('input[name="end-date"]').val().split('/');
-    // endDate = endDate[2] + '-' + endDate[0] + '-' + endDate[1];
-    // console.log('db end date', endDate);
 
     App.Config.SearchParameters = {
         startDate : $('input[name="start-date"]').val(),
@@ -223,8 +208,6 @@ App.Views.Results = Backbone.View.extend({
     console.log(App.Config.SearchParameters);
     console.log( 'searchParameters.location: ', App.Config.SearchParameters.location);
 
-    // console.log('JSON PARSE', JSON.parse(App.SearchParameters.location));
-
     app.views.map = new App.Views.Map({
       collection : app.collection,
       center: App.Config.SearchParameters.location
@@ -234,8 +217,8 @@ App.Views.Results = Backbone.View.extend({
       console.log('collection', self.collection)
       app.views.tile = new App.Views.Tile({
           model : pet
-          // mapView : app.mapView
       });
+
       self.$el.append(app.views.tile.$el)
 
     });
@@ -262,41 +245,34 @@ App.Views.Results = Backbone.View.extend({
       app.collection.remove(model);
     }
 
-    // App.Config.SearchParameters.location = JSON.parse(App.Config.SearchParameters.location);
     app.router.navigate('search', {trigger : true, replace: true})
 
   },
 
   showMapView: function(event) {
-
     var self = this;
     $('.lost-pet').hide();
     $('#map').show();
     google.maps.event.trigger(app.map, 'resize'); //magically fixes window resize problem http://stackoverflow.com/questions/13059034/how-to-use-google-maps-event-triggermap-resize
 
-    app.map.setZoom(15);
-    // console.log( app.searchParameters.location );
-    // console.log( typeof self.searchParameters.location)
-    app.map.setCenter( JSON.parse(App.Config.SearchParameters.location) );
-    
-    // http://stackoverflow.com/questions/19304574/center-set-zoom-of-map-to-cover-all-markers-visible-markers
     var bounds = new google.maps.LatLngBounds();
+    app.map.setZoom(15);
+    app.map.setCenter( JSON.parse(App.Config.SearchParameters.location) );
 
-    app.views.map.markers.forEach( function(marker){
+    app.views.map.markers.forEach(function(marker) {
       marker.setMap(app.map);
       bounds.extend(marker.getPosition());
+
+      app.map.setCenter(bounds.getCenter());
+      app.map.fitBounds(bounds);
+
+      if (app.views.map.markers.length === 1) {
+        app.map.setZoom(app.map.getZoom() - 4)
+      } else {
+        app.map.setZoom(app.map.getZoom() - 1)
+      }
+
     });
-
-    app.map.setCenter(bounds.getCenter());
-    app.map.fitBounds(bounds);
-    app.map.setZoom(app.map.getZoom()-1);
-
-  //   console.log('ResultsView.showMapView()')
-  //   // console.log( 'searchParams:', this.searchParameters );
-  //   // console.log( 'searchParams.location:', this.searchParameters.location );
-
-  //   var $tileView = $('.lost-pet');
-  //   $tileView.remove();
 
     var $mapButton = $(event.target);
     $mapButton.toggle();
@@ -309,26 +285,12 @@ App.Views.Results = Backbone.View.extend({
     var self = this;
     $('#map').hide();
     $('.lost-pet').show();
-  //   var $mapView = $('#map')
-  //   $mapView.remove();
 
     var $tileButton = $(event.target);
     $tileButton.toggle();
 
     var $mapButton = $('#map-button');
     $mapButton.toggle();
-
-  //   var self = this;
-
-  //   this.collection.forEach(function(pet) {
-  //     var tileView = new TileView({
-  //         model: pet,
-  //         parent: self,
-  //         mapView: self.mapView
-  //     });
-
-  //     self.$el.append(tileView.$el)
-  //   });
 
   }
 
@@ -409,30 +371,12 @@ App.Views.Tile = Backbone.View.extend({
 
     app.views.map.markers.forEach( function(marker){
 
-      // console.log( marker.modelId );
-      // console.log( self.model.get('path').key );
       if ( marker.modelId !== self.model.get('path').key ) {
         marker.setMap(null);
       } else {
         marker.setMap(app.map);
       }
-      // var markerLat = marker.position.lat();
-      // var markerLng = marker.position.lng();
-
-      // var location = self.model.get('value').location;
-      // var modelLat = location.lat;
-      // var modelLng = location.lng;
-
-      // console.log(markerLat);
-      // console.log(modelLat);
-      // console.log(markerLat!==modelLat);
-
-      // console.log(markerLng);
-      // console.log(modelLng);
-      // console.log(markerLng!==modelLng);
-
-      // (markerLat !== modelLat) || (markerLng !== modelLng) ? marker.setMap(null) : console.log(marker.map);
-
+     
     })
   },
 
@@ -455,19 +399,14 @@ App.Views.Map = Backbone.View.extend({
         id: 'map',
    tagName: 'div',
    markers: [],
-  // template: Handlebars.compile( $('#template-map').html() ),
 
   render: function(){
-    // console.log('Rendeirng MapView');
-    // console.log('MapView.$el', this.$el);
-    // var $closeButton = $('<button id="close-button" class="btn btn-default btn-danger">').html('x');
-    // this.$el.append($closeButton);
-    // this.$el.toggleClass('hidden');
     this.$el.hide();
     this.$el.appendTo('.results-view');
     console.log('MapView.render()' );
     console.log('==============\n', document.getElementById('map') )
     this.loadMap();
+
   },
 
   initialize: function( options ){
@@ -483,72 +422,39 @@ App.Views.Map = Backbone.View.extend({
   },
 
   selfDestruct: function() {
-    // console.log('self destruct map view');
     this.remove();
   },
 
   loadMap: function(){
-
     console.log( 'loadmap MapView')
-    // console.log( 'MapView.loadMap()' );
-    // console.log( 'loadMap center: ', this.center );
 
     var center = JSON.parse( this.center );
-    // console.log( 'MapView.center = ', this.center)
-    //console.log( '#map before making Gmap =', document.getElementById('map') );
-    // console.log( 'MapView.map=', this.map)
-    // console.log( 'google works=', google.maps.Map)
-    // this.map = new google.maps.Map(document.getElementById('map'), {
-    //   center: center,
-    //   // center: {"lat":45.528932,"lng":-122.68564600000002},
-    //   zoom: 15, //need to incorporate radius math.
-    //   disableDefaultUI: true
-    // });
     
     app.map = new google.maps.Map(document.getElementById('map'), 
       {center : center, zoom : 15, disableDefaultUI : true})
-
-    // app.map = new google.maps.Map(document.get)
-
-    //console.log( 'MapView.map', this.map );
-    //console.log( this.map.center );
-    // console.log( 'MapView.map DOM', document.getElementById('map') );
 
     this.populateMap();
   },
 
   populateMap: function(){
     console.log( 'populateMap MapView')
-    // console.log( 'MapView.populateMap()' );
+    
     var self = this;
     var template = Handlebars.compile(App.Templates['template-infowindow'])
-    // console.log( 'map =', self.map );
-    //var image = 'public/images/binoculars.png'
-    //loop through the collection
-    //make a marker for each model in the collection
 
-    // each not forEach? Backbone colleciton method
-    //_.each (this.collection, )
-    app.collection.each( function( model ){
-      // console.log( 'loop => model attributes:', model.attributes );
-      // console.log( 'function?', model.get );
-      //console.log( 'loop => model:', model.get('value').location )
-      //console.log(model)
+    app.collection.each( function( model ) {
+      // self.markers.length = 0;
+
       var marker = new google.maps.Marker({
         position: model.get('value').location, //are these being altered??
-        //icon: image,
         map: app.map,
         modelId: model.get('path').key
-        // animation: google.maps.Animation.DROP
       });
-      //console.log(model.get('path').key);
-      //console.log(marker.modelId);
 
       self.markers.push(marker);
 
       var infowindow = new google.maps.InfoWindow({
         content: template(model.get('value'))
-        // content: '<img src="' + model.get('value').imageUrl + '" style="max-width:75px">' + model.get('value').colors + ' ' + model.get('value').animalType + ' @ ' + model.get('value').dateTime + '</br>' + model.get('value').description
       });
 
       marker.addListener('mouseover', function() {

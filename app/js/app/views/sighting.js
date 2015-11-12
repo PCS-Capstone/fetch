@@ -323,6 +323,7 @@ App.Views.UploadSighting = Backbone.View.extend({
 
     var self = this;
     console.log( 'this.lat/long=', self.loc.lat, '/', self.loc.lng);
+    console.log('date', $('#uploadDate').val())
 
     var requestObject = {};
 
@@ -396,21 +397,65 @@ App.Views.UploadSighting = Backbone.View.extend({
     //send it off
     function sendToServer () {
 
+      var errorCount = 0;
+
+      if (  $('.alert').length  ) {
+        $('.alert').remove();
+      }
+      if (  !($('#uploadLocation').val() )) {
+        self.loc.lat = null;
+        self.loc.lng = null;
+      }
+
+      $('#upload-form').children().not('button').css('background-color', 'transparent');
+
       var $uploadWarning = $('<div class="alert alert-warning alert-dismissible col-sm-9 col-sm-offset-2 col-lg-8 col-lg-offset-2" role="alert"> <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><strong> Missing Required Fields </strong></div>');
       var uploadWarningColor = '#FCF8E3';
 
-      if ( self.loc.lat === null) {
-        // errorCount += 1;
-        $('#upload-form').prepend($uploadWarning);
-        $("html, body").animate({ scrollTop: 0 }, "slow");
+      if (  $('#uploadSpecies').find(":selected").index() === 0   ) {
+        errorCount += 1;
+        $('#uploadSpecies').css('background-color', uploadWarningColor );
+        console.log('Form Validation Failed: No Animal Selected');
+      }
+
+      if ( (self.loc.lat === 0) || (self.loc.lng === 0)  ) {
+        errorCount += 1;
         $('#uploadLocation').css('background-color', uploadWarningColor);
         console.log('Form Validation Failed: No Latitude or Longitude Set; Incorrect Location');
       }
+      //Check Time/HR/Minutes/AM-PM
+      if ( $('#hour-select').find(":selected").index() === 0   ) {
+        errorCount += 1;
+        $('#hour-select').css('background-color', uploadWarningColor);
+        console.log('Form Validation Failed: No Hour Selected');
+      }
 
+      if ( !$('#am').prop('checked') ) {
+        if (  !$('#pm').prop('checked')   ) {
+          errorCount += 1;
+          $('#am-pm-div').css('background-color', uploadWarningColor);
+          console.log('Required Field: Please Select AM/PM');
+        }
+      }
+
+      console.log('color group', $('input[name="color-group"]:checked'))
+
+      if ( requestObject.colors.length === 0 ) {
+        errorCount += 1
+        $('#colors').css('background-color', uploadWarningColor);
+        console.log('Form Validation Failed: No Color Selected');
+      }
+      //Checks to see if there are any errors; If not, sends form
+
+      console.log('error count', errorCount)
+      if (errorCount > 0) {
+        $('#upload-form').prepend($uploadWarning);
+        $("html, body").animate({ scrollTop: 0 }, "slow");
+      }
       else {
       // //While waiting for server response, this adds a rotating refresh icon and hides form
         $('#upload-form').children().hide();
-        var $refresh = $('<i id="refresh" class="glyphicon glyphicon-refresh gly-spin"></i>');
+        $refresh = $('<i id="refresh" class="glyphicon glyphicon-refresh gly-spin"></i>');
         $refresh.appendTo('#upload-form');
 
       //Sends Form:

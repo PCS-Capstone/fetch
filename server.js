@@ -24,6 +24,10 @@ app.get('/', function (request, response){
   response.sendFile( __dirname + '/app/index.html' );
 });
 
+app.get('#search', function (request, response) {
+  response.sendFile( __dirname + '/app/js/app/views/search.js')
+})
+
 app.get('/pet', function (request, response) {
   console.log(request.query)
 
