@@ -6,10 +6,10 @@ app.router = app.router || new App.Routers.Router();
 App.Config.SearchParameters = {};
 
 $(document).ready( function() {
-  Backbone.history.start({pushState: true});
-  app.router.navigate('', {trigger: true});
+  Backbone.history.start();
+  app.router.navigate(Backbone.history.getFragment(), {trigger: true});
 
   app.collection = new App.Collections.LostPets();
-  // app. = google.maps.Map;
 
 });
+

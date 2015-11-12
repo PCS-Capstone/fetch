@@ -22,7 +22,6 @@ App.Views.SearchForm = Backbone.View.extend({
   },
 
   render: function(){
-    console.log('render')
     if (App.Config.SearchParameters.animalType !== undefined) {
       console.log('edit search');
       app.views.map.markers.length = 0;
