@@ -24,6 +24,10 @@ app.get('/', function (request, response){
   response.sendFile( __dirname + '/app/index.html' );
 });
 
+app.get('/:id', function(request, response) {
+  response.sendFile( __dirname + '/app/index.html' )
+});
+
 app.get('/pet', function (request, response) {
   console.log(request.query)
 
@@ -90,8 +94,3 @@ console.log( 'listening on PORT:3000' );
 //cloudinary.api.delete_all_resources(function(result){})
 
 //console.log('destroyed all cloudinary images')
-
-
-// app.get('/:id', function(request, response) {
-//   response.redirect(200, request.params.id);
-// });

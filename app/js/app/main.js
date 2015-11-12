@@ -44,4 +44,10 @@ $(document).ready( function() {
 
 /*  ------------------------------  */
 
+// window.addEventListener('popstate', function(e) {
+// 	console.log(event)
+// 	app.router.navigate(Backbone.history.getFragment(), {trigger: true});
+// });
+
+
 });

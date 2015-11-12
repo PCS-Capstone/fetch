@@ -60,7 +60,9 @@ header div {
   position: relative;
   padding: 10px;
   border-bottom: 1px solid whitesmoke;
+
   transition: all 1s ease;
+  -webkit-transition: all 1s ease;
 }
 
 header #lost-pet div:hover,
