@@ -1,9 +1,19 @@
 var express    = require('express');
 var bodyParser = require('body-parser');
-var logger     = require('morgan');
+var logger = require('morgan');
+var config = {};
 
-var config = require('./config');
-var db     = require('orchestrate')(config.dbkey);
+if (process.env.HEROKU === true ){
+  config.dbkey = process.env.DBKEY;
+  config.cloudinary = {};
+  config.cloudinary.cloud_name = process.env.CLOUD_NAME;
+  config.cloudinary.api_key = process.env.CLOUD_API_KEY;
+  config.cloudinary.api_secret =process.env.CLOUD_API_SECRET;
+} else {
+  config = require('./config');
+}
+
+var db = require('orchestrate')(config.dbkey);
 
 var app = express();
 app.set('port', (process.env.PORT || 5000));
