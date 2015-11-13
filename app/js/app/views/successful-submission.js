@@ -42,7 +42,6 @@ App.Views.SuccessfulSubmission = Backbone.View.extend({
     var center =
 
     //Adds Google Map of Animal Services/Shelters
-    // $('#map').appendTo('#map-submit-container').removeClass('display-none');
 
     //Creates new Goole Map
     (function () {

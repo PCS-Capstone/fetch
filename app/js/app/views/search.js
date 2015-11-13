@@ -440,10 +440,8 @@ App.Views.Map = Backbone.View.extend({
     console.log( 'loadmap MapView')
 
     var center = JSON.parse( this.center );
-
     app.map = new google.maps.Map(document.getElementById('map'),
       {center : center, zoom : 15, disableDefaultUI : true})
-
     this.populateMap();
   },
 
