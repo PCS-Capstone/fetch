@@ -122,6 +122,9 @@ END GLOBAL STYLES
   font-size: 1.4em;
   font-weight: bold;
 }
+.search .form-horizontal {
+  margin-top: 35px;
+}
 
 span span {
   font-weight: initial;
@@ -425,8 +428,12 @@ textarea {
 }
 
 .color {
-  margin-top: 5px;
-  margin-right: 5px;
+  padding: 15px;
+}
+
+.upload
+#colors label {
+  padding-left: 20px;
 }
 
 #white {
