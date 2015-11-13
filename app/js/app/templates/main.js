@@ -13,7 +13,7 @@
           SEARCHING-FOR-PET TEMPLATES
 *****************************************************
 *****************************************************/
-
+  
 // Searchform
 // ----------
 App.Templates['template-searchform'] =
@@ -128,11 +128,13 @@ App.Templates['template-results-list'] =
   '     <span class="pull-left">' +
   '     Search Results For:' +
   '     <br>' +
-  '     <span>' +
+  '     <span id="results">' +
   '        {{#if colors}}' +
-  '          {{#each colors}} {{this}} {{/each}}' +
+  '          <span id="search-color">' +
+  '            {{#each colors}} {{this}} {{/each}}' +
+  '          </span>' +
   '        {{/if}}' +
-
+           '{{colors.colors}}' +
   '        {{animalType}} sightings within {{radius}} miles of {{address}}' +
 
   '        from {{prettyStartDate}} to {{prettyEndDate}}' +
@@ -340,12 +342,12 @@ App.Templates['template-upload-sighting'] =
   '          </label>' +
   '        </div>' +
   '      </div>' +
-  '      <div class="form-group">' +
+  '      <div class="form-group"  id="colors">' +
   '        <label class="col-sm-2 control-label">' +
   '            * Color:' +
   '        </label>' +
 
-  '        <fieldset id="colors" aria-required="true" required>' +
+  '        <fieldset aria-required="true" required>' +
   '          <div id="white" class="color col-xs-6 col-md-3 pull-left">' +
   '            <input id="uploadWhite" type="checkbox" name="color-group" value="White" aria-label="uploadWhite">' +
   '            <label for="uploadWhite">' +
@@ -406,7 +408,7 @@ App.Templates['template-upload-sighting'] =
 // Sucessful Upload
 // ----------------
 App.Templates['template-successful-submission'] =
-  '<h1>SUCCESS</h1>' +
+  '<h1>SUCCESS!</h1>' +
   '    <p>Your sighting was uploaded succesfully!  Thank you for taking the time to share' +
   '    this information with your community.  Your contribution may help reconnect a pet owner' +
   '    to their lost pet!</p>' +
@@ -421,8 +423,7 @@ App.Templates['template-successful-submission'] =
   '    animal for an identification chip.  Some pet owners have identifing chips surgically placed' +
   '    in their animal that contain their contact information, and some veterinary offices have the' +
   '    ability to scan the animal to check for these chips and they can help contact the owner.</p>' +
-      '<div id="map"</div>'
-
+  '    <div id="map"></div>';
 
 // Error on Upload
 // ---------------

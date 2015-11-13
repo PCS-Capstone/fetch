@@ -40,6 +40,7 @@ App.Views.UploadSighting = Backbone.View.extend({
       var $minuteSelectOption = $('<option class="form-control">');
       $minuteSelectOption.attr('id', 'minuteSelectOption' + j);
       $minuteSelectOption.attr('class', 'minuteSelectOption');
+
       //Adds an initial zero if the minute number is below 10 (i.e. 01, 02, 03...)
       if (j < 10) {
         $minuteSelectOption.attr('value', "0" + j);
@@ -100,6 +101,7 @@ App.Views.UploadSighting = Backbone.View.extend({
 
   datepickerForm: function() {
     //Creates Datepicker feature
+    console.log('date picker')
     $('#uploadDateDiv').datepicker('show').on('changeDate', function(ev){
     })
   },
@@ -387,8 +389,8 @@ App.Views.UploadSighting = Backbone.View.extend({
 
     //send it off
     function sendToServer () {
-
       var errorCount = 0;
+      var valiDate = _.words( $('#uploadDate').val() );
 
       if (  $('.alert').length  ) {
         $('.alert').remove();
@@ -409,13 +411,20 @@ App.Views.UploadSighting = Backbone.View.extend({
         console.log('Form Validation Failed: No Animal Selected');
       }
 
-      if ( (self.loc.lat === 0) || (self.loc.lng === 0)  ) {
+      if ( (self.loc.lat === null) || (self.loc.lng === null)  ) {
         errorCount += 1;
         $('#uploadLocation').css('background-color', uploadWarningColor);
         console.log('Form Validation Failed: No Latitude or Longitude Set; Incorrect Location');
       }
+
+      if (  valiDate[0] === undefined ) {
+        errorCount += 1;
+        $('#uploadDate').css('background-color', uploadWarningColor);
+        console.log('Form Validation Failed: No Date Selected');
+      }
+
       //Check Time/HR/Minutes/AM-PM
-      if ( $('#hour-select').find(":selected").index() === 0   ) {
+      if ( $('#hour-select').find(":selected").index() === 0 ) {
         errorCount += 1;
         $('#hour-select').css('background-color', uploadWarningColor);
         console.log('Form Validation Failed: No Hour Selected');
@@ -429,16 +438,13 @@ App.Views.UploadSighting = Backbone.View.extend({
         }
       }
 
-      console.log('color group', $('input[name="color-group"]:checked'))
-
       if ( requestObject.colors.length === 0 ) {
-        errorCount += 1
+        errorCount += 1;
         $('#colors').css('background-color', uploadWarningColor);
         console.log('Form Validation Failed: No Color Selected');
       }
+      
       //Checks to see if there are any errors; If not, sends form
-
-      console.log('error count', errorCount)
       if (errorCount > 0) {
         $('#upload-form').prepend($uploadWarning);
         $("html, body").animate({ scrollTop: 0 }, "slow");
@@ -461,12 +467,12 @@ App.Views.UploadSighting = Backbone.View.extend({
             if (data === true) {
               app.lat = self.loc.lat;
               app.lng = self.loc.lng;
-              app.router.navigate('successful', {trigger : true})
+              app.router.successful();
             }
             else {
               $("#refresh").remove();
               $("#reveal-form").hide();
-              app.router.navigate('error', {trigger : true})
+              app.router.error();
             }
           }
         });
