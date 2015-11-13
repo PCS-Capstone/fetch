@@ -73,7 +73,7 @@ header #found-pet div:hover,
 }
 
 body.home-img {
-background-image: url('../img/pets.jpg');
+background-image: url('../img/pets-resized.jpg');
 -webkit-background-size: cover;
 -moz-background-size: cover;
 -o-background-size: cover;
