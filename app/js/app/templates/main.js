@@ -319,12 +319,12 @@ App.Templates['template-upload-sighting'] =
   '          </label>' +
   '        </div>' +
   '      </div>' +
-  '      <div class="form-group">' +
+  '      <div class="form-group"  id="colors">' +
   '        <label class="col-sm-2 control-label">' +
   '            ** Color:' +
   '        </label>' +
 
-  '        <fieldset id="colors" aria-required="true" required>' +
+  '        <fieldset aria-required="true" required>' +
   '          <div id="white" class="col-sm-3 col-md-2 pull-left">' +
   '            <input id="uploadWhite" type="checkbox" name="color-group" value="White" aria-label="uploadWhite">' +
   '            <label for="uploadWhite">' +
