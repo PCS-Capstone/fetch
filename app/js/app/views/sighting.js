@@ -1,7 +1,7 @@
 /*========================================
            Found a Pet Views
 ------------------------------------------
-  Variables:
+Variables:
 
 loc {lat: null, lng: null}
 breed : null
@@ -10,7 +10,7 @@ exif : null
 
 App.Views.UploadSighting = Backbone.View.extend({
 
-    tagName: 'div',
+    tagName: 'section',
   className: 'upload',
    template: Handlebars.compile(App.Templates['template-upload-sighting']),
 

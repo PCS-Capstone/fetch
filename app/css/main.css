@@ -73,7 +73,7 @@ header #found-pet div:hover,
 }
 
 body.home-img {
-background-image: url('../img/pets.jpg');
+background-image: url('../img/pets-resized.jpg');
 -webkit-background-size: cover;
 -moz-background-size: cover;
 -o-background-size: cover;
@@ -127,6 +127,9 @@ END GLOBAL STYLES
 .search-header .panel-body > span {
   font-size: 1.4em;
   font-weight: bold;
+}
+.search .form-horizontal {
+  margin-top: 35px;
 }
 
 span span {
@@ -431,8 +434,12 @@ textarea {
 }
 
 .color {
-  margin-top: 5px;
-  margin-right: 5px;
+  padding: 15px;
+}
+
+.upload
+#colors label {
+  padding-left: 20px;
 }
 
 #white {
