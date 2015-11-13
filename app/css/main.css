@@ -22,6 +22,7 @@ html {
 }
 header {
   height: 75px;
+  min-height: 75px;
   width: 100%;
   position: absolute;
   top: 0;
@@ -30,6 +31,52 @@ header {
   text-align: center;
   background-color: #009688;
   box-shadow: 0 0 5px gray;
+  margin: 0;
+  padding: 0;
+}
+header ul {
+  height: inherit;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+header li {
+  height: 75px;
+  display:inline-block;
+  width: 33.3%;
+  float:left;
+}
+header h5 {
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+}
+
+header div {
+  display: inline-block;
+  margin: 0 auto;
+  position: relative;
+  top: 15px;
+  position: relative;
+  padding: 10px;
+  border-bottom: 1px solid whitesmoke;
+
+  transition: all 1s ease;
+  -webkit-transition: all 1s ease;
+}
+
+header #lost-pet div:hover,
+header #found-pet div:hover,
+.trigger-hover {
+  background: white;
+  color: teal;
+}
+
+body.home-img {
+background-image: url('../img/pets.jpg');
+-webkit-background-size: cover;
+-moz-background-size: cover;
+-o-background-size: cover;
 }
 /*
 END GLOBAL STYLES
@@ -37,11 +84,22 @@ END GLOBAL STYLES
 */
 
 .home {
-  min-height: 80 vh;
+  min-height: 80vh;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
   display: flex;
-  flex-flow: column nowrap;
-  justify-content: center;
-  align-items: center;
+  -webkit-flex-flow: column nowrap;
+      -ms-flex-flow: column nowrap;
+          flex-flow: column nowrap;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .home .btn {
@@ -88,9 +146,17 @@ span span {
 }
 
 .flex-row {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
   display: flex;
-  flex-flow: row nowrap;
-  align-items: center;
+  -webkit-flex-flow: row nowrap;
+      -ms-flex-flow: row nowrap;
+          flex-flow: row nowrap;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .btn-description {
@@ -133,7 +199,7 @@ Sighting.js
           border-radius: 50%;
 
   opacity: .8;
-  /*z-index: 99;*/
+  filter: alpha(opacity=80);
   font-size: 1.2em;
 }
 
@@ -301,7 +367,7 @@ textarea {
 }
 .upload
 #Barnyard {
-  background-image: url('http://www.spcacanterbury.org.nz/assets/Images/horse.jpg')
+  background-image: url('../img/barnyard.jpg')
 }
 
 .upload
@@ -348,17 +414,52 @@ textarea {
   font-size: 4em;
   color: #009688;
   opacity: 0;
+  filter: alpha(opacity=0);
   transition: all 0.5s ease;
+   -webkit-transition: all 0.5s ease;
   text-align: center;
   margin: 0 auto;
 }
 .upload
 #upload-animals .glyphicon:hover {
   opacity: 1;
+  filter: alpha(opacity=100);
 }
 .upload
 #upload-animals .glyphicon:active {
   color: white;
+}
+
+.color {
+  margin-top: 5px;
+  margin-right: 5px;
+}
+
+#white {
+  background-color: whitesmoke;
+}
+#black {
+  background-color: black;
+  color: white;
+}
+#brown {
+  background-color: #86561F;
+  color: white;
+}
+#orange {
+  background-color: orange;
+}
+#yellow {
+  background-color: yellow;
+}
+#gray {
+  background-color: gray;
+  color: white;
+}
+
+#color-group {
+  margin-left: 25px;
+  padding-left: 10px;
 }
 
 /*

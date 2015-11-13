@@ -7,11 +7,11 @@ App.Views.HomePage = Backbone.View.extend({
   className: 'home',
 
   render: function() {
-    App.Config.CurrentView = this;
-    var $foundButton = $('<button id="found-button" class="btn btn-default btn-lg">').html( 'Found a Pet' );
-    var $lostButton  = $('<button id="lost-button" class="btn btn-default btn-lg">').html( 'Lost a Pet' );
+    // var $foundButton = $('<button id="found-button" class="btn btn-default btn-lg">').html( 'Found a Pet' );
+    // var $lostButton  = $('<button id="lost-button" class="btn btn-default btn-lg">').html( 'Lost a Pet' );
+    var $body = $('body').addClass('home-img');
 
-    this.$el.append( [ $foundButton, $lostButton] );
+    // this.$el.append( [ $foundButton, $lostButton] );
     this.$el.appendTo( '#master' );
   },
 
@@ -26,12 +26,10 @@ App.Views.HomePage = Backbone.View.extend({
   },
 
   renderUploadPage: function(){
-    App.Config.CurrentView.remove();
     app.router.navigate('sighting', {trigger: true});
   },
 
   renderSearchForm: function(){
-    App.Config.CurrentView.remove();
     app.router.navigate('search', {trigger: true});
   }
 });
