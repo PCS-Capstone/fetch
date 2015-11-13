@@ -22,6 +22,8 @@ App.Views.SearchForm = Backbone.View.extend({
   },
 
   render: function(){
+    var $body = $('body').removeClass('home-img');
+    
     if (App.Config.SearchParameters.animalType !== undefined) {
       console.log('edit search');
       app.views.map.markers.length = 0;
@@ -178,7 +180,7 @@ App.Views.SearchForm = Backbone.View.extend({
         success: function(collection, response, options)
           {console.log('success', response);
             if (response[0] === undefined) {
-              app.router.navigate('noResults', {trigger : true});
+              app.router.navigate('no-results', {trigger : true});
             } else {
               app.router.navigate('results', {trigger : true});
             }

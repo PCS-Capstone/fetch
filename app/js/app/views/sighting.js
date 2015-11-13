@@ -15,6 +15,7 @@ App.Views.UploadSighting = Backbone.View.extend({
    template: Handlebars.compile(App.Templates['template-upload-sighting']),
 
   render: function() {
+    var $body = $('body').removeClass('home-img');
     this.$el.html( this.template() );
     $('#master').append(this.$el);
     /*  -----
