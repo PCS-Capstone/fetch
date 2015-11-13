@@ -23,8 +23,8 @@ App.Templates['template-searchform'] =
   '  </div>' +
 
   '  <div class="form-group">' +
-  '    <label for="animal-type" class="control-label col-xs-2">**Animal Type</label>' +
-  '    <div class="col-xs-10">' +
+  '    <label for="animal-type" class="control-label col-sm-2">**Animal Type</label>' +
+  '    <div class="col-sm-9 col-lg-8">' +
 
   '      <select name="animal-type" class="form-control" id="animal-type" aria-required="true" required>' +
   '        <option value="" disabled selected>"What kind of animal are you looking for?"</option>' +
@@ -39,65 +39,82 @@ App.Templates['template-searchform'] =
   '  </div>' +
 
   '  <div class="form-group">' +
-  '    <label for="address" class="control-label col-xs-2">**Starting Address</label>' +
-  '    <div class="col-xs-10">' +
-  '      <input type="text" id="address-bar" name="address" placeholder="Address"  aria-required="true" required>' +
-  '      <input type="number" id="radius-bar" name="radius" placeholder="Radius ( in miles )"  aria-required="true" required>' +
+  '    <label for="address" class="control-label col-sm-2">**Starting Address</label>' +
+  '    <div class="col-sm-9 col-lg-8">' +
+  '      <input type="text" id="address-bar" class="col-xs-12 col-sm-12 form-control" name="address" placeholder="Address"  aria-required="true" required>' +
+  '    </div>' +
+  '  </div>' +
+
+
+  '  <div class="form-group">' +
+  '    <label for="radius" class="control-label col-sm-2">**Search Radius                 </label>' +
+  '    <div class="col-sm-9 col-md-6">' +
+  '      <input type="number" id="radius-bar" class="col-xs-12 col-sm-9 col-lg-8 form-control" name="radius" placeholder="Radius (in miles)"  aria-required="true" required>' +
   '    </div>' +
   '  </div>' +
 
   '  <div class="form-group">' +
   '    <label for="date" class="control-label col-xs-2">**Search From: </label>' +
-  '    <div class="col-xs-10 input-append date" id="start-date-div" data-date="" data-date-format="yyyy-mm-dd">' +
-  '      <input type="text" readonly="readonly" name="start-date" placeholder="Start Date" id="start-date" class="span2" value="" maxlength="10" placeholder="yyyy-mm-dd" aria-required="true" required>' +
+  '    <div class="col-sm-9 col-md-6 input-append date" id="start-date-div" data-date="" data-date-format="yyyy-mm-dd">' +
+  '      <input type="text" readonly="readonly" name="start-date" placeholder="Start Date" id="start-date" class="span2 col-xs-12 col-sm-9 col-lg-8 form-control" value="" maxlength="10" placeholder="yyyy-mm-dd" aria-required="true" required>' +
   '      <span class="add-on"><i class="icon-th"></i></span>' +
   '    </div>' +
   '  </div>' +
 
   '  <div class="form-group">' +
   '   <label for="date" class="control-label col-xs-2">**Search To: </label>' +
-  '    <div class="col-xs-10 input-append date" id="end-date-div" data-date="" data-date-format="yyyy-mm-dd">' +
-  '      <input type="text" readonly="readonly" name="end-date" placeholder="End Date" id="end-date" class="span2" value="" maxlength="10" aria-required="true" required>' +
+  '    <div class="col-sm-9 col-md-6 input-append date" id="end-date-div" data-date="" data-date-format="yyyy-mm-dd">' +
+  '      <input type="text" readonly="readonly" name="end-date" placeholder="End Date" id="end-date" class="span2 col-xs-12 col-sm-9 col-lg-8 form-control" value="" maxlength="10" aria-required="true" required>' +
   '      <span class="add-on"><i class="icon-th"></i></span>' +
   '    </div>' +
   '  </div>' +
 
   '  <div class="form-group">' +
-  '    <label for="color-group" class="control-label col-xs-2">Colors</label>' +
-  '    <div class="col-xs-9 checkboxes">' +
+  '    <label for="color-group" class="control-label col-sm-2">Colors</label>' +
 
-  '      <div class="input-group">' +
-  '        <div class="checkbox-inline">' +
-  '          <input type="checkbox" name="color-group" value="White"> White </input>' +
-  '        </div>' +
-  '        <div class="checkbox-inline">' +
-  '          <input type="checkbox" name="color-group" value="Black"> Black </input>' +
-  '        </div>' +
-  '        <div class="checkbox-inline">' +
-  '          <input type="checkbox" name="color-group" value="Brown"> Brown</input>' +
-  '        </div>' +
+  '    <fieldset id="colors" aria-required="true" required>' +
+
+  '      <div id="white" class="color col-xs-6 col-md-3 pull-left">' +
+  '         <input id="searchWhite" type="checkbox" name="color-group" value="White"></input>' +
+  '          <label for="searchWhite"> White </label>' +
   '      </div>' +
 
-  '      <div class="input-group">' +
-  '        <div class="checkbox-inline">' +
-  '          <input type="checkbox" name="color-group" value="Orange"> Orange</input>' +
-  '        </div>' +
-  '        <div class="checkbox-inline">' +
-  '          <input type="checkbox" name="color-group" value="Yellow"> Yellow</input>' +
-  '        </div>' +
-  '        <div class="checkbox-inline">' +
-  '          <input type="checkbox" name="color-group" value="Gray"> Gray</input>' +
-  '        </div>' +
+  '      <div id="black" class="color col-xs-6 col-md-3 pull-left">' +
+  '          <input id="searchBlack" type="checkbox" name="color-group" value="Black"></input>' +
+  '           <label for="searchBlack"> Black </label>' +
   '      </div>' +
 
-  '      <div class="input-group">' +
-  '        <div class="checkbox-inline">' +
-  '          <input type="checkbox" name="color-group" value="BrighlyColored"> Brightly Colored</input>' +
-  '        </div>' +
+  '      <div id="brown" class="color col-xs-6 col-md-3 pull-left">' +
+  '          <input id="searchBrown" type="checkbox" name="color-group" value="Brown"></input>' +
+  '           <label for="searchBrown"> Brown </label>' +
   '      </div>' +
 
-  '    </div>' +
+  '      <div id="orange" class="color col-xs-6 col-md-3 pull-left">' +
+  '          <input id="searchOrange" type="checkbox" name="color-group" value="Orange"></input>' +
+  '           <label for="searchOrange"> Orange </label>' +
+  '      </div>' +
+
+  '      <div id="yellow" class="color col-xs-6 col-md-3 pull-left">' +
+  '          <input id="searchYellow" type="checkbox" name="color-group" value="Yellow"> </input>' +
+  '           <label for="searchYellow"> Yellow </label>' +
+  '      </div>' +
+
+  '      <div id="gray" class="color col-xs-6 col-md-3 pull-left">' +
+  '          <input id="searchGray" type="checkbox" name="color-group" value="Gray"></input>' +
+  '           <label for="searchGray"> Gray </label>' +
+  '      </div>' +
+
+  '      <div id="bright" class="color col-xs-6 col-md-3 pull-left">' +
+  '          <input id="searchBright" type="checkbox" name="color-group" value="BrighlyColored"></input>' +
+  '          <label for="searchBright"> Brightly Colored </label>' +
+  '      </div>' +
+
+  '    </fieldset>' +
+
   '  </div>' +
+
+
+
   '  <button type="submit" class="btn btn-success">Submit</button>' +
   '</form>';
 
@@ -290,7 +307,7 @@ App.Templates['template-upload-sighting'] =
 
   '      <div class="form-group">' +
   '        <label for="uploadDate" class="col-sm-2 control-label">' +
-  '          ** Date:' +
+  '          ** Date of Sighting:' +
   '        </label> ' +
   '        <div class="col-sm-9 col-md-4  input-append date" id="uploadDateDiv" data-date="" data-date-format="mm-dd-yyyy">' +
   '          <input id="uploadDate" class="form-control span2" type="text" readonly="readonly" name="date" value="" maxlength="10" placeholder="Date" aria-required="true" required>' +
@@ -323,52 +340,52 @@ App.Templates['template-upload-sighting'] =
   '          </label>' +
   '        </div>' +
   '      </div>' +
-  '      <div class="form-group">' +
+  '      <div class="form-group"  id="colors">' +
   '        <label class="col-sm-2 control-label">' +
   '            ** Color:' +
   '        </label>' +
 
-  '        <fieldset id="colors" aria-required="true" required>' +
-  '          <div id="white" class="col-sm-3 col-md-2 pull-left">' +
+  '        <fieldset aria-required="true" required>' +
+  '          <div id="white" class="color col-xs-6 col-md-3 pull-left">' +
   '            <input id="uploadWhite" type="checkbox" name="color-group" value="White" aria-label="uploadWhite">' +
   '            <label for="uploadWhite">' +
   '              White' +
   '            </label>' +
   '          </div>' +
-  '          <div id="black" class="color col-sm-3 col-md-2 pull-left">' +
+  '          <div id="black" class="color col-xs-6 col-md-3 pull-left">' +
   '            <input id="uploadBlack" type="checkbox" name="color-group" value="Black">' +
   '            <label for="uploadBlack">' +
   '              Black' +
   '            </label>' +
   '          </div>' +
-  '          <div id="brown" class="color col-sm-3 col-md-2 pull-left">' +
+  '          <div id="brown" class="color col-xs-6 col-md-3 pull-left">' +
   '            <input id="uploadBrown" type="checkbox" name="color-group" value="Brown">' +
   '            <label for="uploadBrown">' +
   '              Brown' +
   '            </label>' +
   '          </div>' +
-  '          <div id="orange" class="color col-sm-3 col-md-2 pull-left">' +
+  '          <div id="orange" class="color col-xs-6 col-md-3 pull-left">' +
   '            <input id="uploadOrange" type="checkbox" name="color-group" value="Orange">' +
   '            <label for="uploadOrange">' +
   '              Orange' +
   '            </label>' +
   '          </div>' +
-  '          <div id="yellow" class="color col-sm-3 col-md-2 pull-left">' +
+  '          <div id="yellow" class="color col-xs-6 col-md-3 pull-left">' +
   '            <input id="uploadYellow" type="checkbox" name="color-group" value="Yellow">' +
   '            <label for="uploadYellow">' +
   '              Yellow' +
   '            </label>' +
   '          </div>' +
-  '          <div id="gray" class="color col-sm-3 col-md-2 pull-left">' +
+  '          <div id="gray" class="color col-xs-6 col-md-3 pull-left">' +
   '            <input id="uploadGray" type="checkbox" name="color-group" value="Gray">' +
   '            <label for="uploadGray">' +
   '              Gray' +
   '            </label>' +
   '          </div>' +
-  '          <div id="bright" class="col-sm-3 col-md-2 pull-left">' +
+  '          <div id="bright" class="color col-xs-6 col-md-3 pull-left">' +
   '            <input id="uploadBright" type="checkbox" name="color-group" value="BrightlyColored">' +
-  '            <label for="BrightlyColored">' +
-  '              Brightly Colored' +
+  '            <label for="uploadBright">' +
+  '              Brightly-Colored' +
   '            </label>' +
   '          </div>' +
   '        </fieldset>' +
@@ -389,7 +406,7 @@ App.Templates['template-upload-sighting'] =
 // Sucessful Upload
 // ----------------
 App.Templates['template-successful-submission'] =
-  '<h1>SUCCESS</h1>' +
+  '<h1>SUCCESS!</h1>' +
   '    <p>Your sighting was uploaded succesfully!  Thank you for taking the time to share' +
   '    this information with your community.  Your contribution may help reconnect a pet owner' +
   '    to their lost pet!</p>' +
