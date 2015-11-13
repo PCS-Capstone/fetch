@@ -179,9 +179,9 @@ App.Views.SearchForm = Backbone.View.extend({
       success: function(collection, response, options)
         {console.log('success', response);
           if (response[0] === undefined) {
-            app.router.navigate('no-results', {trigger : true, replace : true});
+            app.router.noResults();
           } else {
-            app.router.navigate('results', {trigger : true, replace : true});
+            app.router.results();
           }
         },
       error: function(collection, response, options)

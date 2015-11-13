@@ -463,12 +463,12 @@ App.Views.UploadSighting = Backbone.View.extend({
             if (data === true) {
               app.lat = self.loc.lat;
               app.lng = self.loc.lng;
-              app.router.navigate('successful', {trigger : true})
+              app.router.successful();
             }
             else {
               $("#refresh").remove();
               $("#reveal-form").hide();
-              app.router.navigate('error', {trigger : true})
+              app.router.error();
             }
           }
         });

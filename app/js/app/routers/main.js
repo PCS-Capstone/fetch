@@ -2,11 +2,7 @@ App.Routers.Router = Backbone.Router.extend({
 	routes: {
 		        '' : 'index',
      	'search' : 'search',
-	  'sighting' : 'sighting',
-	   'results' : 'results',
-	'no-results' : 'noResults',
-	'successful' : 'successful',
-		   'error' : 'error'
+	  'sighting' : 'sighting'
 	},
 
   removeAllViews: function () {
@@ -16,73 +12,46 @@ App.Routers.Router = Backbone.Router.extend({
     };
   },
 
-  recordHash: function(){
-    console.log(this.hashLog);
-    this.hashLog.push(Backbone.history.getHash());
-  },
-
-  hashLog : [],
-
 	index: function() {
-    this.recordHash();
     this.removeAllViews();
+    app.views.home = new App.Views.HomePage({});
     $('li div').removeClass();
-		app.views.home = new App.Views.HomePage({});
 	},
 
-	search: function() {
-    this.recordHash();
-  	this.removeAllViews();
-		app.views.search = new App.Views.SearchForm({});
-	},
-
-	sighting: function() {
-    this.recordHash();
-		this.removeAllViews();
-		app.views.uploadSighting = new App.Views.UploadSighting({loc : {lat : null, lng : null}, exif : null, breed : null });
-	},
-
-	results: function() {
-    this.recordHash();
+	// ../main.js - line 20
+  search: function() {
     this.removeAllViews();
+    app.views.search = new App.Views.SearchForm({});
     
-    if (this.hashLog[this.hashLog.length - 2] !== "search") {
-      console.log('redirecting home');
-      this.navigate('', {trigger: true});
-    } else {
-    console.log('returning results');
+	},
+  // ../main.js - line 23
+	sighting: function() {
+    this.removeAllViews();
+    app.views.uploadSighting = new App.Views.UploadSighting({loc : {lat : null, lng : null}, exif : null, breed : null });
+	},
+
+  // ../views/search.js - line 184
+	results: function() {
+    this.removeAllViews();
     app.views.results = new App.Views.Results ({collection : app.collection});
-    };
 	},
 
+  // ../views/search.js - line 182
 	noResults: function() {
-    this.recordHash();
-		this.removeAllViews();
-    if (this.hashLog[this.hashLog.length - 2] !== "search") {
-      this.navigate('', {trigger: true});
-    } else {
-		app.views.noResults = new App.Views.NoResults({});
-    };
+    this.removeAllViews();
+    app.views.noResults = new App.Views.NoResults({});
 	},
 
+  // ../views/sighting.js - line 471
 	error: function() {
-    this.recordHash();
-		this.removeAllViews();
-    if (this.hashLog[this.hashLog.length - 2] !== "sighting") {
-      this.navigate('', {trigger: true});
-    } else {
-		app.views.error = new App.Views.Error({}); 
-    };
+    this.removeAllViews();
+    app.views.error = new App.Views.Error({});
 	},
 
+  // ../views/sighting.js - line 466
 	successful: function() {
-    this.recordHash();
-		this.removeAllViews();
-    if (this.hashLog[this.hashLog.length - 2] !== "sighting") {
-      this.navigate('', {trigger: true});
-    } else {
-		app.views.successfulSubmission = new App.Views.SuccessfulSubmission({});
-    };
+    this.removeAllViews();
+    app.views.successfulSubmission = new App.Views.SuccessfulSubmission({});
 	}
 });
 
