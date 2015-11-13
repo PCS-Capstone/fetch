@@ -23,10 +23,13 @@ App.Views.SearchForm = Backbone.View.extend({
 
   render: function(){
     var $body = $('body').removeClass('home-img');
-    
+
+    if ( app.views.map !== undefined) {
+      app.views.map.markers.length = 0
+    }
+
     if (App.Config.SearchParameters.animalType !== undefined) {
       console.log('edit search');
-      app.views.map.markers.length = 0;
       this.prePopulate();
     } else {
       console.log('new search')
@@ -77,73 +80,13 @@ App.Views.SearchForm = Backbone.View.extend({
       });
   },
 
-  // validate: function() {
-  //   console.log('validate')
-
-  //   var $uploadWarning = $('<div class="alert alert-warning alert-dismissible col-sm-9 col-sm-offset-2 col-lg-8 col-lg-offset-2" role="alert"> <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><strong> Missing Required Fields </strong></div>');
-  //   var uploadWarningColor = '#FCF8E3';
-
-  //   var forms = document.getElementsByTagName('section');
-  //   console.log('forms', forms)
-
-  //   for (var i = 0; i < forms.length; i++) {
-  //     console.log(forms[i])
-  //     forms[i].noValidate = true;
-
-  //     forms[i].addEventListener('submit', function(event) {
-  //       //Prevent submission if checkValidity on the form returns false.
-  //       console.log('event listener', event)
-  //       console.log('event.target', event.target.checkValidity())
-  //       if (event.target.checkValidity() === false) {
-  //           event.preventDefault();
-  //           if ( $('#animal-type').val() === "") {
-  //             console.log('no animal tyype')
-  //             $('#animal-type').css('background-color', uploadWarningColor );
-  //             $('#search-form').prepend($uploadWarning);
-  //             $("html, body").animate({ scrollTop: 0 }, "slow");
-  //             console.log('Form Validation Failed: No Animal Type Selected');
-  //           } else if ( $('#address-bar').val() === undefined) {
-  //             $('#address-bar').css('background-color', uploadWarningColor );
-  //             $('#search-form').prepend($uploadWarning);
-  //             $("html, body").animate({ scrollTop: 0 }, "slow");
-  //             console.log('Form Validation Failed: No Address Selected');
-  //           }
-
-  //           //Implement you own means of displaying error messages to the user here.
-  //       } else {
-  //         console.log('else')
-  //       }
-  //     })
-  //   }
-
-  // },
-
-    // var $uploadWarning = $('<div class="alert alert-warning alert-dismissible col-sm-9 col-sm-offset-2 col-lg-8 col-lg-offset-2" role="alert"> <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><strong> Missing Required Fields </strong></div>');
-    // var uploadWarningColor = '#FCF8E3';
-
-    // if (app.searchParameters.location === undefined) {
-    //     $('#address-bar').css('background-color', uploadWarningColor );
-    //     $('#search-form').prepend($uploadWarning);
-    //     $("html, body").animate({ scrollTop: 0 }, "slow");
-    //     console.log('Form Validation Failed: No Address Selected');
-    // } else {
-    //   currentView.remove();
-
-    //   app.collection.fetch({data : app.searchParameters,
-    //     success: function(collection, response, options)
-    //       {console.log('success', response);
-    //         if (response[0] === undefined) {
-    //           router.navigate('noResults', {trigger: true});
-    //         } else {
-    //           router.navigate('results', {trigger: true});
-    //         }
-    //       }
-    //   // error: function(collection, response, options)
-    //   // {console.log('error', response); router.navigate('noResults', {trigger: true})}
-    //   });
-    // }
-
   renderSearchResults: function(event){
+    var $uploadWarning = $('<div id="alertRequired" class="alert alert-warning alert-dismissible col-sm-9 col-sm-offset-2 col-lg-8 col-lg-offset-2" role="alert"> <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><strong> Missing Required Fields </strong></div>');
+    var uploadWarningColor = '#FCF8E3';
+
+    // If the initial form submittal is denied because of missing required fields, this resets the highlighted background colors
+    $('#upload-form').children().not('button').css('background-color', 'transparent');
+
     var self = this;
     var month = ['January', 'February', 'March', 'April', 'May', 'June', 'July',
                   'August', 'September', 'October', 'November', 'December'];
@@ -174,23 +117,79 @@ App.Views.SearchForm = Backbone.View.extend({
            colors : $('input[name="color-group"]:checked').map( function(){ return this.value } ).toArray()
     };
 
-    console.log( 'search Params', App.Config.SearchParameters );
+    this.validate();
+
+  },
+
+  validate: function() {
+    var errorCount = 0;
+
+    if (  $('.alert').length  ) {
+      $('.alert').remove();
+    }
+
+    $('#search-form').children().not('button').css('background-color', 'transparent');
+
+    var $uploadWarning = $('<div class="alert alert-warning alert-dismissible col-sm-9 col-sm-offset-2 col-lg-8 col-lg-offset-2" role="alert"> <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><strong> Missing Required Fields </strong></div>');
+    var uploadWarningColor = '#FCF8E3';
+
+    if (  App.Config.SearchParameters.animalType === '' ) { // or ''?
+      errorCount += 1;
+      $('#animal-type').css('background-color', uploadWarningColor );
+      console.log('Form Validation Failed: No Animal Selected');
+    }
+
+    if ( App.Config.SearchParameters.location === undefined  ) {
+      errorCount += 1;
+      $('#address-bar').css('background-color', uploadWarningColor);
+      console.log('Form Validation Failed: No Latitude or Longitude Set; Incorrect Location');
+    }
+
+    if ( App.Config.SearchParameters.radius === undefined  ) {
+      errorCount += 1;
+      $('#radius-bar').css('background-color', uploadWarningColor);
+      console.log('Form Validation Failed: No Radius Set');
+    }
+
+    if ( App.Config.SearchParameters.startDate === '' ) {
+      errorCount += 1;
+      $('#start-date').css('background-color', uploadWarningColor);
+      console.log('Form Validation Failed: No Start Date Stated');
+    }
+
+    if ( App.Config.SearchParameters.endDate === '' ) {
+      errorCount += 1;
+      $('#end-date').css('background-color', uploadWarningColor);
+      console.log('Form Validation Failed: No End Date Stated');
+
+    }
+    
+    //Checks to see if there are any errors; If not, sends form
+    if (errorCount > 0) {
+      $('#search-form').prepend($uploadWarning);
+      $("html, body").animate({ scrollTop: 0 }, "slow");
+    }
+    else {
+    // //While waiting for server response, this adds a rotating refresh icon and hides form
+      $('#search-form').children().hide();
+      $refresh = $('<i id="refresh" class="glyphicon glyphicon-refresh gly-spin"></i>');
+      $refresh.appendTo('#upload-form');
 
       app.collection.fetch({data : App.Config.SearchParameters,
-        success: function(collection, response, options)
-          {console.log('success', response);
-            if (response[0] === undefined) {
-              app.router.navigate('no-results', {trigger : true});
-            } else {
-              app.router.navigate('results', {trigger : true});
-            }
-          },
-        error: function(collection, response, options)
+      success: function(collection, response, options)
+        {console.log('success', response);
+          if (response[0] === undefined) {
+            app.router.navigate('no-results', {trigger : true, replace : true});
+          } else {
+            app.router.navigate('results', {trigger : true, replace : true});
+          }
+        },
+      error: function(collection, response, options)
         {console.log('error', response)}
 
-        });
-    // this.validate();
+      });
 
+    }
   }
 });
 

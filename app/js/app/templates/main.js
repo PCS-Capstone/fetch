@@ -340,12 +340,12 @@ App.Templates['template-upload-sighting'] =
   '          </label>' +
   '        </div>' +
   '      </div>' +
-  '      <div class="form-group">' +
+  '      <div class="form-group"  id="colors">' +
   '        <label class="col-sm-2 control-label">' +
   '            ** Color:' +
   '        </label>' +
 
-  '        <fieldset id="colors" aria-required="true" required>' +
+  '        <fieldset aria-required="true" required>' +
   '          <div id="white" class="color col-xs-6 col-md-3 pull-left">' +
   '            <input id="uploadWhite" type="checkbox" name="color-group" value="White" aria-label="uploadWhite">' +
   '            <label for="uploadWhite">' +
@@ -406,7 +406,7 @@ App.Templates['template-upload-sighting'] =
 // Sucessful Upload
 // ----------------
 App.Templates['template-successful-submission'] =
-  '<h1>SUCCESS</h1>' +
+  '<h1>SUCCESS!</h1>' +
   '    <p>Your sighting was uploaded succesfully!  Thank you for taking the time to share' +
   '    this information with your community.  Your contribution may help reconnect a pet owner' +
   '    to their lost pet!</p>' +
