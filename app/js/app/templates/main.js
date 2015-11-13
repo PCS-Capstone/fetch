@@ -128,11 +128,13 @@ App.Templates['template-results-list'] =
   '     <span class="pull-left">' +
   '     Search Results For:' +
   '     <br>' +
-  '     <span>' +
+  '     <span id="results">' +
   '        {{#if colors}}' +
-  '          {{#each colors}} {{this}} {{/each}}' +
+  '          <span id="search-color">' +
+  '            {{#each colors}} {{this}} {{/each}}' +
+  '          </span>' +
   '        {{/if}}' +
-
+           '{{colors.colors}}' +
   '        {{animalType}} sightings within {{radius}} miles of {{address}}' +
 
   '        from {{prettyStartDate}} to {{prettyEndDate}}' +
