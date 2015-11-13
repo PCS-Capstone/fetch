@@ -385,7 +385,7 @@ App.Templates['template-upload-sighting'] =
 // Sucessful Upload
 // ----------------
 App.Templates['template-successful-submission'] =
-  '<h1>SUCCESS</h1>' +
+  '<h1>SUCCESS!</h1>' +
   '    <p>Your sighting was uploaded succesfully!  Thank you for taking the time to share' +
   '    this information with your community.  Your contribution may help reconnect a pet owner' +
   '    to their lost pet!</p>' +
