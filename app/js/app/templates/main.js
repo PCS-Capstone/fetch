@@ -70,37 +70,51 @@ App.Templates['template-searchform'] =
   '  </div>' +
 
   '  <div class="form-group">' +
-  '    <label for="color-group" class="control-label col-xs-2">Colors</label>' +
-  '    <div class="col-xs-9 checkboxes">' +
+  '    <label for="color-group" class="control-label col-sm-2">Colors</label>' +
 
-  '      <div class="input-group">' +
-  '        <div class="checkbox-inline">' +
-  '          <input type="checkbox" name="color-group" value="White"> White </input>' +
-  '        </div>' +
-  '        <div class="checkbox-inline">' +
-  '          <input type="checkbox" name="color-group" value="Black"> Black </input>' +
-  '        </div>' +
-  '        <div class="checkbox-inline">' +
-  '          <input type="checkbox" name="color-group" value="Brown"> Brown</input>' +
-  '        </div>' +
+  '    <fieldset id="colors" aria-required="true" required>' +
+
+  '      <div id="white" class="color col-xs-6 col-md-3 pull-left">' +
+  '         <input id="searchWhite" type="checkbox" name="color-group" value="White"></input>' +
+  '          <label for="searchWhite"> White </label>' +
   '      </div>' +
 
-  '      <div class="input-group">' +
-  '        <div class="checkbox-inline">' +
-  '          <input type="checkbox" name="color-group" value="Orange"> Orange</input>' +
-  '        </div>' +
-  '        <div class="checkbox-inline">' +
-  '          <input type="checkbox" name="color-group" value="Yellow"> Yellow</input>' +
-  '        </div>' +
-  '        <div class="checkbox-inline">' +
-  '          <input type="checkbox" name="color-group" value="Gray"> Gray</input>' +
-  '        </div>' +
-  '        <div class="checkbox-inline">' +
-  '          <input type="checkbox" name="color-group" value="BrighlyColored"> Brightly Colored</input>' +
-  '        </div>' +
+  '      <div id="black" class="color col-xs-6 col-md-3 pull-left">' +
+  '          <input id="searchBlack" type="checkbox" name="color-group" value="Black"></input>' +
+  '           <label for="searchBlack"> Black </label>' +
   '      </div>' +
-  '    </div>' +
+
+  '      <div id="brown" class="color col-xs-6 col-md-3 pull-left">' +
+  '          <input id="searchBrown" type="checkbox" name="color-group" value="Brown"></input>' +
+  '           <label for="searchBrown"> Brown </label>' +
+  '      </div>' +
+
+  '      <div id="orange" class="color col-xs-6 col-md-3 pull-left">' +
+  '          <input id="searchOrange" type="checkbox" name="color-group" value="Orange"></input>' +
+  '           <label for="searchOrange"> Orange </label>' +
+  '      </div>' +
+
+  '      <div id="yellow" class="color col-xs-6 col-md-3 pull-left">' +
+  '          <input id="searchYellow" type="checkbox" name="color-group" value="Yellow"> </input>' +
+  '           <label for="searchYellow"> Yellow </label>' +
+  '      </div>' +
+
+  '      <div id="gray" class="color col-xs-6 col-md-3 pull-left">' +
+  '          <input id="searchGray" type="checkbox" name="color-group" value="Gray"></input>' +
+  '           <label for="searchGray"> Gray </label>' +
+  '      </div>' +
+
+  '      <div id="bright" class="color col-xs-6 col-md-3 pull-left">' +
+  '          <input id="searchBright" type="checkbox" name="color-group" value="BrighlyColored"></input>' +
+  '          <label for="searchBright"> Brightly Colored </label>' +
+  '      </div>' +
+
+  '    </fieldset>' +
+
   '  </div>' +
+
+
+
   '  <button type="submit" class="btn btn-success">Submit</button>' +
   '</form>';
 
