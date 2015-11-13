@@ -22,6 +22,10 @@ $(document).ready( function() {
   $('#found-pet').click(function() {
     app.router.navigate('sighting', {trigger: true});
   });
+  $('#fetch').click(function() {
+    app.router.navigate('sighting', {trigger: true});
+  });
+
 
 /*  ------------------------------  */
 

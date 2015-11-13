@@ -23,7 +23,7 @@ App.Views.SearchForm = Backbone.View.extend({
 
   render: function(){
     var $body = $('body').removeClass('home-img');
-    
+
     if (App.Config.SearchParameters.animalType !== undefined) {
       console.log('edit search');
       app.views.map.markers.length = 0;
@@ -65,7 +65,16 @@ App.Views.SearchForm = Backbone.View.extend({
   events: {
     'submit form' : 'renderSearchResults',
     'click #start-date' : 'datepicker',
-    'click #end-date' : 'datepicker'
+    'click #end-date' : 'datepicker',
+    'click .color' : 'checkColor'
+  },
+  /*
+  ----------
+  Make whole color div clickable
+  ----------
+  */
+  checkColor: function(event) {
+    $(event.target.children[0]).trigger('click');
   },
 
   datepicker: function(event) {
