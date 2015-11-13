@@ -72,6 +72,12 @@ header #found-pet div:hover,
   color: teal;
 }
 
+body.home-img {
+background-image: url('../img/pets.jpg');
+-webkit-background-size: cover;
+-moz-background-size: cover;
+-o-background-size: cover;
+}
 /*
 END GLOBAL STYLES
 --------------------

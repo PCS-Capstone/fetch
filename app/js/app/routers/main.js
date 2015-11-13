@@ -4,7 +4,7 @@ App.Routers.Router = Backbone.Router.extend({
      	'search' : 'search',
 	  'sighting' : 'sighting',
 	   'results' : 'results',
-	 'noResults' : 'noResults',
+	'no-results' : 'noResults',
 	'successful' : 'successful',
 		 'error' : 'error'
 	},
