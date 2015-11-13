@@ -15,6 +15,7 @@ $(document).ready( function() {
   CREATES HEADER NAVIGATION LINKS:
     -Redirects on click
   */
+ 
   $('#lost-pet').click(function() {
     app.router.navigate('search', {trigger: true});
   })
