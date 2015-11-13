@@ -208,6 +208,19 @@ App.Views.Results = Backbone.View.extend({
     this.$el.html( this.template(App.Config.SearchParameters) );
     this.$el.prependTo('#master');
 
+    var $span = $('#search-color');
+   
+    if ( App.Config.SearchParameters.colors.length === 2 ) {
+      console.log('length is two');
+      $span.text(App.Config.SearchParameters.colors[0] + ' and '  +
+        App.Config.SearchParameters.colors[1]);
+    } else if (App.Config.SearchParameters.colors.length > 2 ){
+      console.log('length is more than two');
+      var lastColor = App.Config.SearchParameters.colors.pop()
+      $span.text(App.Config.SearchParameters.colors.join(', ') + ' and ' + 
+        lastColor);
+    }
+
     var self = this;
 
     console.log(App.Config.SearchParameters);
@@ -312,8 +325,9 @@ App.Views.Tile = Backbone.View.extend({
 
   render: function() {
     console.log('tile view render')
-    this.$el.html( this.template(this.model.get('value') ) );
 
+    this.$el.html( this.template(this.model.get('value') ) );
+    
     $('#lost-pet div').addClass('trigger-hover');
     $('#found-pet div').removeClass('trigger-hover')
   },
