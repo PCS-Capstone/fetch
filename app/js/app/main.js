@@ -26,6 +26,5 @@ $(document).ready( function() {
     app.router.navigate('', {trigger: true});
   });
 
-
 /*  ------------------------------  */
 });

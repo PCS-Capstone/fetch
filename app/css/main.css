@@ -114,6 +114,10 @@ END GLOBAL STYLES
 --------------------
 */
 
+strong {
+  color: red;
+}
+
 .home {
   min-height: 80vh;
   display: -webkit-box;
