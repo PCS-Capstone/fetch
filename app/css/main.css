@@ -82,10 +82,21 @@ header #found-pet div:hover,
   top: 0;
   margin-top: 75px;
   z-index: 200;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
   display: flex;
-  flex-flow: column;
-  justify-content: center;
-  align-items: center;
+  -webkit-flex-flow: column;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
   padding-bottom: 10em;
 }
 
@@ -117,6 +128,7 @@ background-image: url('../img/pets-resized.jpg');
     /* Android 2.3 */
     background-image: -webkit-repeating-linear-gradient(top,rgb(0, 165, 223) 0%,rgb(62, 20, 123) 20%,rgb(226, 0, 121) 40%,rgb(223, 19, 44) 60%,rgb(243, 239, 21) 80%,rgb(0, 152, 71) 100%);
     /* IE10+ */
+    background-image: -webkit-repeating-linear-gradient(top, rgb(0, 165, 223) 0%, rgb(62, 20, 123) 20%, rgb(226, 0, 121) 40%, rgb(223, 19, 44) 60%, rgb(243, 239, 21) 80%, rgb(0, 152, 71) 100%);
     background-image: repeating-linear-gradient(to bottom,rgb(0, 165, 223) 0%,rgb(62, 20, 123) 20%,rgb(226, 0, 121) 40%,rgb(223, 19, 44) 60%,rgb(243, 239, 21) 80%,rgb(0, 152, 71) 100%);
     background-image: -ms-repeating-linear-gradient(top,rgb(0, 165, 223) 0%,rgb(62, 20, 123) 20%,rgb(226, 0, 121) 40%,rgb(223, 19, 44) 60%,rgb(243, 239, 21) 80%,rgb(0, 152, 71) 100%);
 }
@@ -257,11 +269,7 @@ Sighting.js
   margin: 0 auto;
   color: white;
   border: 10px  inset white;
-
-  -webkit-border-radius: 50%;
-     -moz-border-radius: 50%;
-       -o-border-radius: 50%;
-          border-radius: 50%;
+  border-radius: 50%;
 
   opacity: .8;
   filter: alpha(opacity=80);
@@ -305,9 +313,9 @@ Sighting.js
 #previewHolder.rotate90 {
   -webkit-transform: rotate(90deg);
       -moz-trasform: rotate(90deg);
-       -o-transform: rotate(90deg);
       -ms-transform: rotate(90deg);
-          transform: rotate(90deg);
+       -webkit-transform: rotate(90deg);
+              transform: rotate(90deg);
 
   max-height: 200px;
   width: auto;
@@ -316,8 +324,8 @@ Sighting.js
   -webkit-transform: rotate(180deg);
       -moz-trasform: rotate(180deg);
       -ms-transform: rotate(180deg);
-       -o-transform: rotate(180deg);
-          transform: rotate(180deg);
+          -webkit-transform: rotate(180deg);
+              transform: rotate(180deg);
 
   max-height: 200px;
   width: auto;
@@ -326,8 +334,8 @@ Sighting.js
   -webkit-transform: rotate(270deg);
       -moz-trasform: rotate(270deg);
       -ms-transform: rotate(270deg);
-       -o-transform: rotate(270deg);
-          transform: rotate(270deg);
+          -webkit-transform: rotate(270deg);
+              transform: rotate(270deg);
 
   max-height: 200px;
   width: auto;
@@ -340,23 +348,15 @@ textarea {
 /* Rotating Refresh Icon for Waiting */
 .gly-spin {
   -webkit-animation: spin 2s infinite linear;
-  -moz-animation: spin 2s infinite linear;
-  -o-animation: spin 2s infinite linear;
   animation: spin 2s infinite linear;
 
   opacity: .5;
+
+  filter: alpha(opacity=50);
   text-align: center;
   display: block;
   margin-top: 125px;
   font-size: 4em;
-}
-@-moz-keyframes spin {
-  0% {
-    -moz-transform: rotate(0deg);
-  }
-  100% {
-    -moz-transform: rotate(359deg);
-  }
 }
 @-webkit-keyframes spin {
   0% {
@@ -364,14 +364,6 @@ textarea {
   }
   100% {
     -webkit-transform: rotate(359deg);
-  }
-}
-@-o-keyframes spin {
-  0% {
-    -o-transform: rotate(0deg);
-  }
-  100% {
-    -o-transform: rotate(359deg);
   }
 }
 @keyframes spin {
