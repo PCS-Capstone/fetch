@@ -23,7 +23,7 @@ App.Views.NoResults = Backbone.View.extend({
 
   searchAgain: function() {
   	var self = this;
-    app.router.navigate('search', {trigger : true});
+    app.router.search();
 
   }
 })

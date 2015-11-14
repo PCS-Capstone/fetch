@@ -8,7 +8,6 @@ App.Views.Error = Backbone.View.extend({
    template: Handlebars.compile(App.Templates['template-upload-error']),
 
   render: function() {
-    App.Config.CurrentView = this;
     this.$el.html( this.template() )
     this.$el.prependTo('#master');
   },
@@ -23,8 +22,7 @@ App.Views.Error = Backbone.View.extend({
   },
 
   reTry: function(){
-    App.Config.CurrentView.remove();
-    app.router.navigate('sighting')
+    app.router.sighting();
     $("#reveal-form").show();
   }
 

@@ -26,7 +26,7 @@ App.Templates['template-searchform'] =
   '  </div>' +
 
   '  <div class="form-group">' +
-  '    <label for="animal-type" class="control-label col-sm-2">*Animal Type</label>' +
+  '    <label for="animal-type" class="control-label col-sm-2">*Animal Type: </label>' +
   '    <div class="col-sm-9 col-lg-8">' +
 
   '      <select name="animal-type" class="form-control" id="animal-type" aria-required="true" required>' +
@@ -42,7 +42,7 @@ App.Templates['template-searchform'] =
   '  </div>' +
 
   '  <div class="form-group">' +
-  '    <label for="address" class="control-label col-sm-2">*Starting Address</label>' +
+  '    <label for="address" class="control-label col-sm-2">*Starting Address: </label>' +
   '    <div class="col-sm-9 col-lg-8">' +
   '      <input type="text" id="address-bar" class="col-xs-12 col-sm-12 form-control" name="address" placeholder="Address"  aria-required="true" required>' +
   '    </div>' +
@@ -50,9 +50,9 @@ App.Templates['template-searchform'] =
 
 
   '  <div class="form-group">' +
-  '    <label for="radius" class="control-label col-sm-2">*Search Radius                 </label>' +
+  '    <label for="radius" class="control-label col-sm-2">*Search Radius: </label>' +
   '    <div class="col-sm-9 col-md-6">' +
-  '      <input type="number" id="radius-bar" class="col-xs-12 col-sm-9 col-lg-8 form-control" name="radius" placeholder="Radius (in miles)"  aria-required="true" required>' +
+  '      <input type="number" min="1" id="radius-bar" class="col-xs-12 col-sm-9 col-lg-8 form-control" name="radius" placeholder="Radius (in miles)"  aria-required="true" required>' +
   '    </div>' +
   '  </div>' +
 
@@ -73,7 +73,7 @@ App.Templates['template-searchform'] =
   '  </div>' +
 
   '  <div class="form-group">' +
-  '    <label for="color-group" class="control-label col-sm-2">Colors</label>' +
+  '    <label for="color-group" class="control-label col-sm-2">Colors: </label>' +
 
   '    <fieldset id="colors" aria-required="true" required>' +
 
@@ -394,7 +394,7 @@ App.Templates['template-upload-sighting'] =
   '      </div>' +
   '      <div class="form-group">' +
   '        <label for="uploadDescription" class="col-sm-2  control-label">' +
-  '          Enter description:' +
+  '          Enter Description:' +
   '        </label>' +
   '        <div class="col-sm-9 col-md-9 col-lg-8">' +
   '          <textarea id="uploadDescription" name="description" class="form-control col-sm-10 col-md-9 col-lg-8"></textarea>' +
