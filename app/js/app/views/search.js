@@ -68,7 +68,16 @@ App.Views.SearchForm = Backbone.View.extend({
   events: {
     'submit form' : 'renderSearchResults',
     'click #start-date' : 'datepicker',
-    'click #end-date' : 'datepicker'
+    'click #end-date' : 'datepicker',
+    'click .color' : 'checkColor'
+  },
+  /*
+  ----------
+  Make whole color div clickable
+  ----------
+  */
+  checkColor: function(event) {
+    $(event.target.children[0]).trigger('click');
   },
 
   datepicker: function(event) {
@@ -163,7 +172,7 @@ App.Views.SearchForm = Backbone.View.extend({
       console.log('Form Validation Failed: No End Date Stated');
 
     }
-    
+
     //Checks to see if there are any errors; If not, sends form
     if (errorCount > 0) {
       $('#search-form').prepend($uploadWarning);
@@ -209,7 +218,7 @@ App.Views.Results = Backbone.View.extend({
     this.$el.prependTo('#master');
 
     var $span = $('#search-color');
-   
+
     if ( App.Config.SearchParameters.colors.length === 2 ) {
       console.log('length is two');
       $span.text(App.Config.SearchParameters.colors[0] + ' and '  +
@@ -217,7 +226,7 @@ App.Views.Results = Backbone.View.extend({
     } else if (App.Config.SearchParameters.colors.length > 2 ){
       console.log('length is more than two');
       var lastColor = App.Config.SearchParameters.colors.pop()
-      $span.text(App.Config.SearchParameters.colors.join(', ') + ' and ' + 
+      $span.text(App.Config.SearchParameters.colors.join(', ') + ' and ' +
         lastColor);
     }
 
@@ -327,7 +336,7 @@ App.Views.Tile = Backbone.View.extend({
     console.log('tile view render')
 
     this.$el.html( this.template(this.model.get('value') ) );
-    
+
     $('#lost-pet div').addClass('trigger-hover');
     $('#found-pet div').removeClass('trigger-hover')
   },
@@ -477,15 +486,12 @@ App.Views.Map = Backbone.View.extend({
       self.markers.push(marker);
 
       var infowindow = new google.maps.InfoWindow({
-        content: template(model.get('value'))
+        content: template(model.get('value')),
+        maxWidth: "320"
       });
 
-      marker.addListener('mouseover', function() {
+      marker.addListener('click', function() {
         infowindow.open(marker.get('map'), marker);
-      });
-
-      marker.addListener('mouseout', function(){
-        infowindow.close(marker.get('map'), marker);
       });
     });
   }
