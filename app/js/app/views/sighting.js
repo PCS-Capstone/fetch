@@ -1,11 +1,6 @@
 /*========================================
            Found a Pet Views
 ------------------------------------------
-Variables:
-
-loc {lat: null, lng: null}
-breed : null
-exif : null
 ========================================*/
 
 App.Views.UploadSighting = Backbone.View.extend({
@@ -101,14 +96,11 @@ App.Views.UploadSighting = Backbone.View.extend({
 
   datepickerForm: function() {
     //Creates Datepicker feature
-    console.log('date picker')
     $('#uploadDateDiv').datepicker('show').on('changeDate', function(ev){
     })
   },
 
   populateFields : function() {
-    //Resets lat/lng each time photo is uploaded
-
     var $imageField = $('#upload-photo');
     var $imagePreview = $('#previewHolder');
 
@@ -123,9 +115,6 @@ App.Views.UploadSighting = Backbone.View.extend({
 
     //Clears data fields and any previously-stored lat/long data each time new photo is uploaded
     $('#uploadDate').val(' ');
-
-    // self.location.lat = 0;
-    // self.location.lng = 0;
 
     $('#uploadLocation').val(' ');
     $('[name=hour]').prop('selectedIndex', 0);
@@ -169,7 +158,6 @@ App.Views.UploadSighting = Backbone.View.extend({
       //If geolocation exif data is abset, googleAutocomplete is called - which:
         //Adds google autocomplete feature to location field;
         //Attaches map
-        console.log('exif', this.exif)
       $('#reveal-form').removeClass('display-none');
 
       if ( !(exifData.GPSLatitude) || !(exifData.GPSLongitude) ) {

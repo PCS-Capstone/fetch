@@ -29,10 +29,8 @@ App.Views.SearchForm = Backbone.View.extend({
     }
 
     if (App.Config.SearchParameters.animalType !== undefined) {
-      console.log('edit search');
       this.prePopulate();
     } else {
-      console.log('new search')
       this.$el.html( this.template() );
       $('#master').html(this.$el);
     }
@@ -43,7 +41,6 @@ App.Views.SearchForm = Backbone.View.extend({
   },
 
   initialize: function( options ){
-    console.log('search form initializing');
     var self = this;
     _.extend( this, options );
     this.render();
@@ -61,7 +58,6 @@ App.Views.SearchForm = Backbone.View.extend({
     function convertToLatLng () {
       var place = autocomplete.getPlace();
       App.Config.SearchParameters.location = { lat: place.geometry.location.lat(), lng: place.geometry.location.lng() };
-      console.log( 'location:', App.Config.SearchParameters.location );
     }
   },
 
@@ -81,10 +77,8 @@ App.Views.SearchForm = Backbone.View.extend({
   },
 
   datepicker: function(event) {
-    console.log(event.target.id);
     $('#' + event.target.id).datepicker('show')
       .on('changeDate', function(ev){
-        console.log(ev.date);
         $('#' + event.target.id).datepicker('hide');
       });
   },
@@ -105,12 +99,12 @@ App.Views.SearchForm = Backbone.View.extend({
     var prettyStartDate = $('input[name="start-date"]').val().split('/');
     prettyStartDate = (month[(prettyStartDate[0]) -1] + " " + prettyStartDate[1] +
       ', ' + prettyStartDate[2]);
-    console.log('pretty start date', prettyStartDate);
+    
 
     var prettyEndDate = $('input[name="end-date"]').val().split('/');
     prettyEndDate = (month[(prettyEndDate[0]) -1] + " " + prettyEndDate[1] +
       ', ' + prettyEndDate[2]);
-    console.log('pretty end date', prettyEndDate);
+    
 
     App.Config.SearchParameters = {
         startDate : $('input[name="start-date"]').val(),
@@ -154,7 +148,7 @@ App.Views.SearchForm = Backbone.View.extend({
       console.log('Form Validation Failed: No Latitude or Longitude Set; Incorrect Location');
     }
 
-    if ( App.Config.SearchParameters.radius === undefined  ) {
+    if ( App.Config.SearchParameters.radius === undefined  || App.Config.SearchParameters.radius < 0 ) {
       errorCount += 1;
       $('#radius-bar').css('background-color', uploadWarningColor);
       console.log('Form Validation Failed: No Radius Set');
@@ -186,7 +180,7 @@ App.Views.SearchForm = Backbone.View.extend({
 
       app.collection.fetch({data : App.Config.SearchParameters,
       success: function(collection, response, options)
-        {console.log('success', response);
+        {
           if (response[0] === undefined) {
             app.router.noResults();
           } else {
@@ -213,18 +207,15 @@ App.Views.Results = Backbone.View.extend({
     mapView: {},
 
   render: function() {
-    console.log('results view');
     this.$el.html( this.template(App.Config.SearchParameters) );
     this.$el.prependTo('#master');
 
     var $span = $('#search-color');
 
     if ( App.Config.SearchParameters.colors.length === 2 ) {
-      console.log('length is two');
       $span.text(App.Config.SearchParameters.colors[0] + ' and '  +
         App.Config.SearchParameters.colors[1]);
     } else if (App.Config.SearchParameters.colors.length > 2 ){
-      console.log('length is more than two');
       var lastColor = App.Config.SearchParameters.colors.pop()
       $span.text(App.Config.SearchParameters.colors.join(', ') + ' and ' +
         lastColor);
@@ -232,16 +223,12 @@ App.Views.Results = Backbone.View.extend({
 
     var self = this;
 
-    console.log(App.Config.SearchParameters);
-    console.log( 'searchParameters.location: ', App.Config.SearchParameters.location);
-
     app.views.map = new App.Views.Map({
       collection : app.collection,
       center: App.Config.SearchParameters.location
     });
 
     app.collection.forEach(function(pet) {
-      console.log('collection', self.collection)
       app.views.tile = new App.Views.Tile({
           model : pet
       });
@@ -256,7 +243,6 @@ App.Views.Results = Backbone.View.extend({
   },
 
   initialize: function( options ) {
-    console.log( 'Initializing ResultsView' );
     _.extend( this, options );
     this.render();
   },
@@ -275,8 +261,7 @@ App.Views.Results = Backbone.View.extend({
       app.collection.remove(model);
     }
 
-    app.router.navigate('search', {trigger : true, replace: true})
-
+    app.router.search();
   },
 
   showMapView: function(event) {
@@ -333,8 +318,6 @@ App.Views.Tile = Backbone.View.extend({
    template: Handlebars.compile(App.Templates['template-tile-view']),
 
   render: function() {
-    console.log('tile view render')
-
     this.$el.html( this.template(this.model.get('value') ) );
 
     $('#lost-pet div').addClass('trigger-hover');
@@ -342,7 +325,6 @@ App.Views.Tile = Backbone.View.extend({
   },
 
   initialize: function( options ) {
-    console.log( 'Initialize TileView' )
     _.extend( this, options );
     this.listenTo(this.model, 'remove', this.selfDestruct)
 
@@ -437,22 +419,16 @@ App.Views.Map = Backbone.View.extend({
   render: function(){
     this.$el.hide();
     this.$el.appendTo('.results-view');
-    console.log('MapView.render()' );
-    console.log('==============\n', document.getElementById('map') )
+
     this.loadMap();
 
   },
 
   initialize: function( options ){
-    console.log( 'Initialize MapView')
     _.extend( this, options );
     this.listenTo(this.model, 'remove', this.selfDestruct);
     this.render();
 
-  },
-
-  events: {
-    // 'click close-button' : 'hideMap'
   },
 
   selfDestruct: function() {
@@ -460,8 +436,6 @@ App.Views.Map = Backbone.View.extend({
   },
 
   loadMap: function(){
-    console.log( 'loadmap MapView')
-
     var center = JSON.parse( this.center );
     app.map = new google.maps.Map(document.getElementById('map'),
       {center : center, zoom : 15, disableDefaultUI : true})
@@ -469,16 +443,14 @@ App.Views.Map = Backbone.View.extend({
   },
 
   populateMap: function(){
-    console.log( 'populateMap MapView')
-
     var self = this;
     var template = Handlebars.compile(App.Templates['template-infowindow'])
 
     app.collection.each( function( model ) {
-      // self.markers.length = 0;
+
 
       var marker = new google.maps.Marker({
-        position: model.get('value').location, //are these being altered??
+        position: model.get('value').location,
         map: app.map,
         modelId: model.get('path').key
       });

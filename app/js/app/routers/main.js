@@ -20,14 +20,19 @@ App.Routers.Router = Backbone.Router.extend({
 
 	// ../main.js - line 20
   search: function() {
-    $('.mask').remove();
+    $('.mask').remove();      
+
+
     this.removeAllViews();
     app.views.search = new App.Views.SearchForm({});
     
 	},
   // ../main.js - line 23
 	sighting: function() {
-    $('.mask').remove();
+    if( $('.mask') ){
+      $('.mask').remove();      
+    }
+
     this.removeAllViews();
     app.views.uploadSighting = new App.Views.UploadSighting({loc : {lat : null, lng : null}, exif : null, breed : null });
 	},
@@ -57,7 +62,3 @@ App.Routers.Router = Backbone.Router.extend({
 	}
 });
 
-
-// make a global currentView property that sets the current view
-// so every time a back button is pressed it removes the current view
-// and renders new view from the route

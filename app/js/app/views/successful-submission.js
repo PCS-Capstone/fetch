@@ -17,17 +17,12 @@ App.Views.SuccessfulSubmission = Backbone.View.extend({
   },
 
   initialize: function( options ) {
-    console.log('success init');
-    console.log('lat', app.lat);
-    console.log('lng', app.lng);
   	_.extend(this, options);
   	this.render();
 
   },
 
   google: function(xLat, xLng) {
-    console.log('google')
-    console.log('lat and lng', xLat, xLng)
   /* --------------------------------------------------------
      Google() is run following successful sighting submission;
       It displays local animal services agencies in google map; and
@@ -45,7 +40,6 @@ App.Views.SuccessfulSubmission = Backbone.View.extend({
 
     //Creates new Goole Map
     (function () {
-      console.log('google map');
       map = new google.maps.Map(document.getElementById('map'), {
         center: {lat: app.lat, lng: app.lng},
         zoom: 12
@@ -53,8 +47,6 @@ App.Views.SuccessfulSubmission = Backbone.View.extend({
       infowindow = new google.maps.InfoWindow();
       callback();
     })();
-
-    console.log(map);
 
     //Sets options of Google Places Request;
       //For each result, a marker is made
@@ -79,7 +71,6 @@ App.Views.SuccessfulSubmission = Backbone.View.extend({
 
       //Creates markers for each result returned by the Google Places request declared below
       function getResults(results, status) {
-        console.log('google maps results ' + results);
         if (status == google.maps.places.PlacesServiceStatus.OK) {
           for (var i = 0; i < results.length; i++) {
             createMarker(results[i]);
