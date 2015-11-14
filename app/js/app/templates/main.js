@@ -13,7 +13,7 @@
           SEARCHING-FOR-PET TEMPLATES
 *****************************************************
 *****************************************************/
-  
+
 // Searchform
 // ----------
 App.Templates['template-searchform'] =
@@ -115,7 +115,7 @@ App.Templates['template-searchform'] =
 
 
 
-  '  <button type="submit" class="btn btn-success">Submit</button>' +
+  '  <button type="submit" class="btn btn-primary btn-lg center-block">Submit</button>' +
   '</form>';
 
 

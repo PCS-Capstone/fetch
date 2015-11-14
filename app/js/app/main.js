@@ -15,7 +15,7 @@ $(document).ready( function() {
   CREATES HEADER NAVIGATION LINKS:
     -Redirects on click
   */
- 
+
   $('#lost-pet').click(function() {
     app.router.navigate('search', {trigger: true});
   })
@@ -23,7 +23,7 @@ $(document).ready( function() {
     app.router.navigate('sighting', {trigger: true});
   });
   $('#fetch').click(function() {
-    app.router.navigate('sighting', {trigger: true});
+    app.router.navigate('', {trigger: true});
   });
 
 

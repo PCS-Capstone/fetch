@@ -94,7 +94,17 @@ background-image: url('../img/pets-resized.jpg');
 
 .required {
   color: red;
-  font-weight: normal;  
+  font-weight: normal;
+}
+
+.search button,
+.upload button {
+  background-color: #009688;
+}
+
+.search button:hover,
+.upload button:hover {
+  background-color: #26A69A; 
 }
 
 /*
