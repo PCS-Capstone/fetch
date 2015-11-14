@@ -23,5 +23,9 @@ $(document).ready( function() {
     app.router.navigate('sighting', {trigger: true});
   });
 
+  $('#fetch').click(function() {
+    app.router.navigate('', {trigger: true})
+  });
+
 /*  ------------------------------  */
 });
