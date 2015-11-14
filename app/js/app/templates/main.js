@@ -19,11 +19,11 @@
 App.Templates['template-searchform'] =
   '<form class="form-horizontal">' +
   '  <div class="form-group" id="search-form">' +
-  '    <label class="control-label col-xs-2 required"> **Required fields</label>' +
+  '    <label class="control-label col-sm-2 required"> <em>* Required fields </em> </label>' +
   '  </div>' +
 
   '  <div class="form-group">' +
-  '    <label for="animal-type" class="control-label col-sm-2">**Animal Type</label>' +
+  '    <label for="animal-type" class="control-label col-sm-2">*Animal Type</label>' +
   '    <div class="col-sm-9 col-lg-8">' +
 
   '      <select name="animal-type" class="form-control" id="animal-type" aria-required="true" required>' +
@@ -39,7 +39,7 @@ App.Templates['template-searchform'] =
   '  </div>' +
 
   '  <div class="form-group">' +
-  '    <label for="address" class="control-label col-sm-2">**Starting Address</label>' +
+  '    <label for="address" class="control-label col-sm-2">*Starting Address</label>' +
   '    <div class="col-sm-9 col-lg-8">' +
   '      <input type="text" id="address-bar" class="col-xs-12 col-sm-12 form-control" name="address" placeholder="Address"  aria-required="true" required>' +
   '    </div>' +
@@ -47,14 +47,14 @@ App.Templates['template-searchform'] =
 
 
   '  <div class="form-group">' +
-  '    <label for="radius" class="control-label col-sm-2">**Search Radius                 </label>' +
+  '    <label for="radius" class="control-label col-sm-2">*Search Radius                 </label>' +
   '    <div class="col-sm-9 col-md-6">' +
   '      <input type="number" id="radius-bar" class="col-xs-12 col-sm-9 col-lg-8 form-control" name="radius" placeholder="Radius (in miles)"  aria-required="true" required>' +
   '    </div>' +
   '  </div>' +
 
   '  <div class="form-group">' +
-  '    <label for="date" class="control-label col-xs-2">**Search From: </label>' +
+  '    <label for="date" class="control-label col-xs-2">*Search From: </label>' +
   '    <div class="col-sm-9 col-md-6 input-append date" id="start-date-div" data-date="" data-date-format="yyyy-mm-dd">' +
   '      <input type="text" readonly="readonly" name="start-date" placeholder="Start Date" id="start-date" class="span2 col-xs-12 col-sm-9 col-lg-8 form-control" value="" maxlength="10" placeholder="yyyy-mm-dd" aria-required="true" required>' +
   '      <span class="add-on"><i class="icon-th"></i></span>' +
@@ -62,7 +62,7 @@ App.Templates['template-searchform'] =
   '  </div>' +
 
   '  <div class="form-group">' +
-  '   <label for="date" class="control-label col-xs-2">**Search To: </label>' +
+  '   <label for="date" class="control-label col-xs-2">*Search To: </label>' +
   '    <div class="col-sm-9 col-md-6 input-append date" id="end-date-div" data-date="" data-date-format="yyyy-mm-dd">' +
   '      <input type="text" readonly="readonly" name="end-date" placeholder="End Date" id="end-date" class="span2 col-xs-12 col-sm-9 col-lg-8 form-control" value="" maxlength="10" aria-required="true" required>' +
   '      <span class="add-on"><i class="icon-th"></i></span>' +
@@ -274,14 +274,14 @@ App.Templates['template-upload-sighting'] =
 
   '      <div class="row">' +
   '        <div class="col-sm-2 text-right">' +
-  '          <em>** Required Fields</em>' +
+  '          <span class="required"> <em>* Required fields </em>  </span>   ' +
   '        </div>' +
   '      </div>' +
 
 
   '      <div class="form-group">' +
   '        <label for="uploadSpecies" class="col-sm-2 control-label">' +
-  '          ** Type of Animal:' +
+  '          * Type of Animal:' +
   '        </label>' +
 
   '        <div class="col-sm-9 col-lg-8">' +
@@ -299,7 +299,7 @@ App.Templates['template-upload-sighting'] =
 
   '      <div class="form-group">' +
   '        <label for="uploadLocation" class="col-sm-2 control-label">' +
-  '          ** Location:' +
+  '          * Location:' +
   '        </label>' +
   '        <div class="col-sm-9 col-lg-8">' +
   '          <input id="uploadLocation" class="form-control" type="text" name="address" placeholder="Location" aria-required="true" required>' +
@@ -309,7 +309,7 @@ App.Templates['template-upload-sighting'] =
 
   '      <div class="form-group">' +
   '        <label for="uploadDate" class="col-sm-2 control-label">' +
-  '          ** Date of Sighting:' +
+  '          * Date of Sighting:' +
   '        </label> ' +
   '        <div class="col-sm-9 col-md-4  input-append date" id="uploadDateDiv" data-date="" data-date-format="mm-dd-yyyy">' +
   '          <input id="uploadDate" class="form-control span2" type="text" readonly="readonly" name="date" value="" maxlength="10" placeholder="Date" aria-required="true" required>' +
@@ -319,7 +319,7 @@ App.Templates['template-upload-sighting'] =
   '      </div>' +
   '      <div class="form-group">' +
   '        <label class="col-sm-2 control-label">' +
-  '          ** Time:' +
+  '          * Time:' +
   '        </label>' +
   '        <div id="hour" class="col-sm-4 col-md-2 input-group pull-left">' +
   '          <span class="input-group-addon">hr</span>' +
@@ -344,7 +344,7 @@ App.Templates['template-upload-sighting'] =
   '      </div>' +
   '      <div class="form-group"  id="colors">' +
   '        <label class="col-sm-2 control-label">' +
-  '            ** Color:' +
+  '            * Color:' +
   '        </label>' +
 
   '        <fieldset aria-required="true" required>' +
@@ -387,7 +387,7 @@ App.Templates['template-upload-sighting'] =
   '          <div id="bright" class="color col-xs-6 col-md-3 pull-left">' +
   '            <input id="uploadBright" type="checkbox" name="color-group" value="BrightlyColored">' +
   '            <label for="uploadBright">' +
-  '              Brightly-Colored' +
+  '              Brightly Colored' +
   '            </label>' +
   '          </div>' +
   '        </fieldset>' +

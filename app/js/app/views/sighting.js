@@ -72,8 +72,12 @@ App.Views.UploadSighting = Backbone.View.extend({
     'click #uploadLocationButton' : 'googleAutocomplete',
     'click .alert' : 'removeAlert',
     'click .animal-photo-div' : 'breedType',
+    'click .color'  : 'checkColor'
   },
 
+  checkColor: function(event) {
+    $(event.target.children[0]).trigger('click');
+  },
 
   breedType: function(event) {
     var self = this;
