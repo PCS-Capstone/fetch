@@ -460,6 +460,10 @@ textarea {
   cursor: pointer;
 }
 
+.color label, .color input {
+  cursor: inherit;
+}
+
 .upload #colors label,
 .search #colors label {
   padding-left: 15px;
