@@ -17,6 +17,9 @@
 // Searchform
 // ----------
 App.Templates['template-searchform'] =
+  '<h1 class="text-center">Have you lost a pet?</h1>' +
+  '<p class="text-center">Fill out the form below to search through lost pet sightings.</p>' +
+
   '<form class="form-horizontal">' +
   '  <div class="form-group" id="search-form">' +
   '    <label class="control-label col-xs-2 required"> **Required fields</label>' +
@@ -274,7 +277,7 @@ App.Templates['template-upload-sighting'] =
 
   '      <div class="row">' +
   '        <div class="col-sm-2 text-right">' +
-  '          <em>** Required Fields</em>' +
+  '          <strong>** Required Fields</strong>' +
   '        </div>' +
   '      </div>' +
 
