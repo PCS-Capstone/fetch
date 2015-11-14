@@ -7,11 +7,14 @@ App.Views.HomePage = Backbone.View.extend({
   className: 'home',
 
   render: function() {
-    // var $foundButton = $('<button id="found-button" class="btn btn-default btn-lg">').html( 'Found a Pet' );
-    // var $lostButton  = $('<button id="lost-button" class="btn btn-default btn-lg">').html( 'Lost a Pet' );
     var $body = $('body').addClass('home-img');
+    var $mask = $('<div>').addClass('mask');
+    var $description = $('<h1>').html('Help connect lost pets to their humans');
+    var $descDiv = $('<div>');
 
-    // this.$el.append( [ $foundButton, $lostButton] );
+    $description.appendTo($descDiv);
+    $descDiv.appendTo($mask);
+    $mask.appendTo('body');
     this.$el.appendTo( '#master' );
   },
 
