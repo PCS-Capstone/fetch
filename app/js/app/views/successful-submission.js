@@ -79,7 +79,7 @@ App.Views.SuccessfulSubmission = Backbone.View.extend({
 
       //Creates markers for each result returned by the Google Places request declared below
       function getResults(results, status) {
-        console.log(results);
+        console.log('google maps results ' + results);
         if (status == google.maps.places.PlacesServiceStatus.OK) {
           for (var i = 0; i < results.length; i++) {
             createMarker(results[i]);
