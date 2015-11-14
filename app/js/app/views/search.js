@@ -486,15 +486,12 @@ App.Views.Map = Backbone.View.extend({
       self.markers.push(marker);
 
       var infowindow = new google.maps.InfoWindow({
-        content: template(model.get('value'))
+        content: template(model.get('value')),
+        maxWidth: "320"
       });
 
-      marker.addListener('mouseover', function() {
+      marker.addListener('click', function() {
         infowindow.open(marker.get('map'), marker);
-      });
-
-      marker.addListener('mouseout', function(){
-        infowindow.close(marker.get('map'), marker);
       });
     });
   }

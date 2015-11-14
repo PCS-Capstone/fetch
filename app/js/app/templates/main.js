@@ -163,12 +163,9 @@ App.Templates['template-tile-view'] =
   '    {{#if colors}}' +
         '<h4>Color: {{#each colors}} {{this}} {{/each}}' +
         '{{/if}}</h4>' +
-          '  <h4>Last seen: {{displayDate}} at {{displayTime}} near {{address}}</h4>' +
+  '       <h4>Last seen: {{displayDate}} at {{displayTime}} near {{address}}</h4>' +
+  '     <button class="btn btn-info btn-lg">Location/Map</button>' +
   '  </div>' +
-  '</div>' +
-
-  '<div class="flex-row">' +
-  '  <button class="btn btn-info btn-lg">Location/Map</button>' +
   '</div>' +
 
   '{{#if description}}' +
@@ -445,7 +442,7 @@ App.Templates['template-upload-error'] =
 // -------------------
 App.Templates['template-infowindow'] =
   '<div class="row">' +
-  '    <img class="col-xs-6" src={{imageUrl}}>' +
+  '    <img class="col-xs-6" src={{imageUrl}} style="width:150px;">' +
   '    <div class="col-xs-6">' +
   '      <p>{{colors}} {{animalType}}</p>' +
   '      <p>sighted on {{dateTime}}</p>' +
