@@ -36,7 +36,7 @@ App.Templates['template-searchform'] =
   '        <option value="Bird"> Bird </option>' +
   '        <option value="Small-Furry"> Small and Furry </option>' +
   '        <option value="Scales-Fins"> Scales and Fins</option>' +
-  '        <option value="Barnyard"> Barnyard </option>' +
+  '        <option value="Large Mammal"> Large Mammal </option>' +
   '      </select>' +
   '    </div>' +
   '  </div>' +
@@ -252,8 +252,8 @@ App.Templates['template-upload-sighting'] =
           '</div>'+
         '</div>'+
         '<div class="col-sm-6 col-md-4 animal-photo-div">'+
-          '<div id="Barnyard">'+
-            '<h3> Barnyard </h3>'+
+          '<div id="large-mammal">'+
+            '<h3> Large Mammal </h3>'+
             '<span class="glyphicon glyphicon-cloud-upload" aria-hidden="true"></span>'+
           '</div>'+
         '</div>'+
@@ -292,7 +292,7 @@ App.Templates['template-upload-sighting'] =
   '            <option value="Bird"> Bird </option>' +
   '            <option value="Small-Furry"> Small and Furry </option>' +
   '            <option value="Scales-Fins"> Scales and Fins</option>' +
-  '            <option value="Barnyard"> Barnyard </option>' +
+  '            <option value="Large Mammal"> Large Mammal </option>' +
   '          </select>' +
   '        </div>' +
   '      </div>' +
