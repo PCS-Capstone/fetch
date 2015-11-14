@@ -20,12 +20,14 @@ App.Routers.Router = Backbone.Router.extend({
 
 	// ../main.js - line 20
   search: function() {
+    $('.mask').remove();
     this.removeAllViews();
     app.views.search = new App.Views.SearchForm({});
     
 	},
   // ../main.js - line 23
 	sighting: function() {
+    $('.mask').remove();
     this.removeAllViews();
     app.views.uploadSighting = new App.Views.UploadSighting({loc : {lat : null, lng : null}, exif : null, breed : null });
 	},

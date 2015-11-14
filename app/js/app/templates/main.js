@@ -211,7 +211,7 @@ App.Templates['template-upload-sighting'] =
     '<div id="upload-photo-div" class="col-sm-offset-1 col-sm-10">'+
     '<div class="row">'+
       '<div class="col-xs-10 col-xs-offset-1">'+
-        '<h1> Have You Found a Lost Pet? </h1>'+
+        '<h1 class="text-center"> Have you found a lost pet? </h1>'+
         '<p class="text-center"> What kind of animal is it?</p>'+
       '</div>'+
     '</div>'+
