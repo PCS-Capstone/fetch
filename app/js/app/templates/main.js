@@ -167,7 +167,7 @@ App.Templates['template-tile-view'] =
   '  </div>' +
   '</div>' +
 
-  '<div class="flex-row">' +
+  '<div class="flex-row" style="margin-top: 5px;">' +
   '  <button class="btn btn-info btn-lg">Location/Map</button>' +
   '</div>' +
 
@@ -445,7 +445,7 @@ App.Templates['template-upload-error'] =
 // -------------------
 App.Templates['template-infowindow'] =
   '<div class="row">' +
-  '    <img class="col-xs-6" src={{imageUrl}}>' +
+  '    <img class="col-xs-6" src={{imageUrl}} style="width:200px;">' +
   '    <div class="col-xs-6">' +
   '      <p>{{colors}} {{animalType}}</p>' +
   '      <p>sighted on {{dateTime}}</p>' +

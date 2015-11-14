@@ -7,6 +7,7 @@
 Global CSS Styles
 ********************
 */
+
 * {
   font-family: 'Muli', sans-serif;
 }
@@ -45,6 +46,7 @@ header li {
   display:inline-block;
   width: 33.3%;
   float:left;
+  cursor:pointer;
 }
 header h5 {
   display: inline-block;
@@ -329,6 +331,7 @@ textarea {
   height: 200px;
   margin: 15px auto;
   max-width: 350px;
+  cursor:pointer;
 }
 .upload
 .animal-photo-div div {
@@ -435,6 +438,7 @@ textarea {
 
 .color {
   padding: 15px;
+  cursor: pointer;
 }
 
 .upload

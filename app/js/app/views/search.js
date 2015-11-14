@@ -480,12 +480,8 @@ App.Views.Map = Backbone.View.extend({
         content: template(model.get('value'))
       });
 
-      marker.addListener('mouseover', function() {
+      marker.addListener('click', function() {
         infowindow.open(marker.get('map'), marker);
-      });
-
-      marker.addListener('mouseout', function(){
-        infowindow.close(marker.get('map'), marker);
       });
     });
   }
