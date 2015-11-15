@@ -371,7 +371,6 @@ App.Views.UploadSighting = Backbone.View.extend({
       requestObject.description = $('#uploadDescription').val();
       requestObject.imageUrl = $('#previewHolder').attr('src');
       requestObject.exifData = this.exif
-      console.log(requestObject);
       sendToServer();
 
 
@@ -568,14 +567,6 @@ App.Views.UploadSighting = Backbone.View.extend({
       //This gets current geolocation data from BROWSER (requests permission from client);
       navigator.geolocation.getCurrentPosition(showPosition);
 
-      //If browser lacks geolocation data (or client denies permission to access) this centers map on entire united states
-      // function denyPosition(positionError) {
-      //   map = new google.maps.Map(document.getElementById('locationMap'), {
-      //     center: {lat: 39.5, lng: -98.35},
-      //     zoom: 4
-      //   });
-      //   mapListener();
-      // }
       //Generates map using BROWSER location data if initial "if" statement is met
       function showPosition(position) {
         centerLat = position.coords.latitude;
@@ -598,9 +589,6 @@ App.Views.UploadSighting = Backbone.View.extend({
           self.loc.lng = mapClickEvent.latLng.lng();
           createMarker(mapClickEvent);
         });
-        //Creates Google Geocoder, which is needed by the codeAddress() function:
-          //This is needed to convert lat/long into Street Address, to display in location's input field for user
-        // geocoder = new google.maps.Geocoder;
       }
 
     })();
