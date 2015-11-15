@@ -32,7 +32,7 @@ App.Views.SuccessfulSubmission = Backbone.View.extend({
     var map;
     var request;
     var place;
-    var infoWindow;
+    var infowindow;
     var marker;
 
     var center =
@@ -79,7 +79,7 @@ App.Views.SuccessfulSubmission = Backbone.View.extend({
         }
       };
 
-      service = new google.maps.places.PlacesService(map);
+      var service = new google.maps.places.PlacesService(map);
       service.textSearch(request, getResults);
 
     }

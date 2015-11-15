@@ -12,6 +12,7 @@ App.Routers.Main = Backbone.Router.extend({
       app.views[view].remove();
       delete app.views[view];
     };
+    $('#master').empty();
   },
 
 	index: function() {
