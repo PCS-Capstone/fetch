@@ -144,7 +144,7 @@ App.Views.UploadSighting = Backbone.View.extend({
 
     //Uses Google Geocoder to convert lat/long into address; inputs address into form's location field
     function codeAddress() {
-      geocoder = new google.maps.Geocoder;
+      // geocoder = new google.maps.Geocoder;
       geocoder.geocode( { 'location': {lat: self.loc.lat, lng: self.loc.lng}}, function(results, status) {
         $('#uploadLocation').val(results[0].formatted_address);
       });
@@ -371,7 +371,7 @@ App.Views.UploadSighting = Backbone.View.extend({
       requestObject.description = $('#uploadDescription').val();
       requestObject.imageUrl = $('#previewHolder').attr('src');
       requestObject.exifData = this.exif
-
+      console.log(requestObject);
       sendToServer();
 
 
@@ -431,7 +431,7 @@ App.Views.UploadSighting = Backbone.View.extend({
         $('#colors').css('background-color', uploadWarningColor);
         console.log('Form Validation Failed: No Color Selected');
       }
-      
+
       //Checks to see if there are any errors; If not, sends form
       if (errorCount > 0) {
         $('#upload-form').prepend($uploadWarning);
@@ -484,7 +484,7 @@ App.Views.UploadSighting = Backbone.View.extend({
     var place;
     var infoWindow;
     var marker;
-    var geocoder;
+    var geocoder = new google.maps.Geocoder;
 
     var self = this;
 
@@ -559,27 +559,33 @@ App.Views.UploadSighting = Backbone.View.extend({
       var centerLat;
       var centerLng;
 
+      map = new google.maps.Map(document.getElementById('locationMap'), {
+        center: {lat: 39.5, lng: -98.35},
+        zoom: 4
+      });
+      mapListener();
+
       //This gets current geolocation data from BROWSER (requests permission from client);
-      if (navigator.geolocation) {
-          navigator.geolocation.getCurrentPosition(showPosition);
-      }
+      navigator.geolocation.getCurrentPosition(showPosition);
+
       //If browser lacks geolocation data (or client denies permission to access) this centers map on entire united states
-      else {
-        map = new google.maps.Map(document.getElementById('locationMap'), {
-          center: {lat: 39.5, lng: -98.35},
-          zoom: 4
-        });
-        mapListener();
-      }
+      // function denyPosition(positionError) {
+      //   map = new google.maps.Map(document.getElementById('locationMap'), {
+      //     center: {lat: 39.5, lng: -98.35},
+      //     zoom: 4
+      //   });
+      //   mapListener();
+      // }
       //Generates map using BROWSER location data if initial "if" statement is met
       function showPosition(position) {
         centerLat = position.coords.latitude;
         centerLng = position.coords.longitude;
-        map = new google.maps.Map(document.getElementById('locationMap'), {
-          center: {lat: centerLat, lng: centerLng},
-          zoom: 12
-        });
-        mapListener();
+        // map = new google.maps.Map(document.getElementById('locationMap'), {
+        //   center: {lat: centerLat, lng: centerLng},
+        //   zoom: 12
+        // });
+        map.setCenter({lat: centerLat, lng: centerLng});
+        map.setZoom(12);
       }
 
       function mapListener() {
@@ -594,7 +600,7 @@ App.Views.UploadSighting = Backbone.View.extend({
         });
         //Creates Google Geocoder, which is needed by the codeAddress() function:
           //This is needed to convert lat/long into Street Address, to display in location's input field for user
-        geocoder = new google.maps.Geocoder;
+        // geocoder = new google.maps.Geocoder;
       }
 
     })();
