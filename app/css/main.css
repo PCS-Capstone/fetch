@@ -78,7 +78,7 @@ header #found-pet div:hover,
   background: rgba(0,0,0, 0.6);
   position: absolute;
   width: 100%;
-  height: 90%;
+  height: 100%;
   top: 0;
   margin-top: 75px;
   z-index: 200;
@@ -533,3 +533,14 @@ textarea {
 END SIGHTING
 --------------------
 */
+
+#footer {
+  padding-top: 5px;
+  background: black;
+  position: fixed;
+  bottom: 0;
+}
+
+footer p {
+  color: #aaa
+}

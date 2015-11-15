@@ -23,6 +23,7 @@ App.Routers.Main = Backbone.Router.extend({
 
 	// ../main.js - line 20
   search: function() {
+    $('#footer').remove();
     $('.mask').remove();      
 
 
@@ -32,6 +33,7 @@ App.Routers.Main = Backbone.Router.extend({
 	},
   // ../main.js - line 23
 	sighting: function() {
+    $('#footer').remove();
     if( $('.mask') ){
       $('.mask').remove();      
     }
