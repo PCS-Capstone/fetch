@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<!-- THIS SHOULD BE RUN USING PYTHON SIMPLE SERVER, NOT THE FILE SYSTEM. USING THE FILE SYSTEM PRODUCES A CROSS-ORIGIN CONFLICT WITH BLANKET.JS AND ITS MOCHA CONVERTER -->
+
+<head>
+  <title>Backbone.js Testing</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" type="text/css" href="js/lib/mocha.css">
+
+  <!-- Dependencies -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.1/lodash.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.2.3/backbone-min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.4/handlebars.min.js"></script>
+  <script>function initMap(){}</script>
+  <script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCI3j4h95OGMqH6Akyj6a9x4dJnnYrWL4U&libraries=places&callback=initMap">
+  </script>
+  <script src="js/lib/mocha.js"></script>
+  <script src="js/lib/chai.js"></script>
+  <!-- <script src="js/lib/chai-jquery.js"></script> -->
+  <script src="js/lib/sinon-chai.js"></script>
+  <script src="js/lib/sinon.js"></script>
+  <script src="js/lib/blanket.js" data-cover-adapter="js/lib/mocha-blanket.js"></script>
+
+  <!-- Application scripts -->
+  <script src="../app/js/app/namespace.js" data-cover></script>
+  <script src="../app/js/app/models/lostPet.js" data-cover></script>
+  <script src="../app/js/app/collections/lostPets.js" data-cover></script>
+  <script src="../app/js/app/templates/main.js" data-cover></script>
+
+  <script src="../app/js/app/views/home.js" data-cover></script>
+  <script src="../app/js/app/views/search.js" data-cover></script>
+  <script src="../app/js/app/views/sighting.js" data-cover></script>
+  <script src="../app/js/app/views/error.js" data-cover></script>
+  <script src="../app/js/app/views/successful-submission.js" data-cover></script>
+  <script src="../app/js/app/views/no-results.js" data-cover></script>
+
+  <script src="../app/js/app/routers/main.js" data-cover></script>
+  <script src="../app/js/app/main.js" data-cover></script>
+  
+  <!-- Setup Mocha and Chai -->
+  <script>
+    var expect = chai.expect;
+    mocha.setup('bdd');
+    window.onload = function () {
+      mocha.run();
+      $('.mask').remove();
+      $('body').removeClass();
+    };
+  </script>
+
+  <!-- Test specifications -->
+  <script src="js/spec/setup.js"></script>
+  <script src="js/spec/namespace.js"></script>
+  <script src="js/spec/models/lost_pet.js"></script>
+  <script src="js/spec/collections/lost_pets.js"></script>
+
+  <!-- <script src="js/spec/views/home.js"></script> -->
+  <script src="js/spec/views/search.js"></script>
+  <script src="js/spec/views/no_results.js"></script>
+  <script src="js/spec/views/sighting.js"></script>
+  <script src="js/spec/views/successful.js"></script>
+  <script src="js/spec/views/error.js"></script>
+</head>
+
+<body>
+
+  <div id="mocha"></div>
+
+  <!-- Test Fixtures -->
+  <div id="fixtures" style="display:none; visibility:hidden;"></div>
+
+</body>
+</html>

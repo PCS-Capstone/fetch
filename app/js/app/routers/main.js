@@ -1,4 +1,6 @@
-App.Routers.Router = Backbone.Router.extend({
+'use strict';
+
+App.Routers.Main = Backbone.Router.extend({
 	routes: {
 		        '' : 'index',
      	'search' : 'search',

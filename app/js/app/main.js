@@ -1,7 +1,9 @@
+'use strict';
+
 var app    = app || {};
 
 app.views  = app.views || {};
-app.router = app.router || new App.Routers.Router();
+app.router = app.router || new App.Routers.Main();
 
 App.Config.SearchParameters = {};
 
