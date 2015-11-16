@@ -105,7 +105,7 @@ App.Views.UploadSighting = Backbone.View.extend({
     var $imagePreview = $('#previewHolder');
 
     var self = this;
-    var geocoder;
+    var geocoder = new google.maps.Geocoder;
     var displayDate;
     var displayTime;
 
